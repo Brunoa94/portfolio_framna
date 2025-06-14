@@ -1,6 +1,5 @@
 "use client";
 
-import ImageUploader from "@/components/imageUploader";
 import { signIn, signOut, useSession } from "next-auth/react";
 import styled from "styled-components";
 
@@ -26,7 +25,6 @@ export default function Home() {
       {/* <button onClick={() => doLogin()}>Login</button>
       <button onClick={() => signOut()}>Logout</button>
       <span>User: {session?.user?.name}</span> */}
-      <ImageUploader />
     </Container>
   );
 }

@@ -14,9 +14,7 @@ export async function GET(response: NextResponse) {
   try {
     const users: User[] = await prisma.user.findMany();
 
-    return new Response(JSON.stringify({ users }), {
-      status: 200,
-    });
+    return NextResponse.json(users, { status: 200 });
   } catch (error: unknown) {
     let errorBody: ErrorI;
 
@@ -27,7 +25,7 @@ export async function GET(response: NextResponse) {
           error: "Table Users not found.",
         };
 
-        return new Response(JSON.stringify({ ...errorBody }), { status: 500 });
+        return NextResponse.json(errorBody, { status: 500 });
       }
 
       errorBody = {
@@ -35,7 +33,7 @@ export async function GET(response: NextResponse) {
         error: error.message,
       };
 
-      return new Response(JSON.stringify({ ...errorBody }), { status: 500 });
+      return NextResponse.json(errorBody, { status: 500 });
     }
 
     errorBody = {
@@ -43,7 +41,7 @@ export async function GET(response: NextResponse) {
       error: "Internal server error on Post User",
     };
 
-    return new Response(JSON.stringify({ ...errorBody }), { status: 500 });
+    return NextResponse.json(errorBody, { status: 500 });
   }
 }
 
@@ -56,7 +54,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
       data: { username, password },
     });
 
-    return new Response(JSON.stringify({ user: newUser }), { status: 200 });
+    return NextResponse.json(newUser, { status: 200 });
   } catch (error: unknown) {
     let errorBody: ErrorI;
 
@@ -67,7 +65,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
           error: "A user already exists with the same username",
         };
 
-        return new Response(JSON.stringify({ ...errorBody }), { status: 409 });
+        return NextResponse.json(errorBody, { status: 409 });
       }
 
       errorBody = {
@@ -81,6 +79,6 @@ export async function POST(request: NextRequest, response: NextResponse) {
       error: "Internal server error on Post User",
     };
 
-    return new Response(JSON.stringify({ ...errorBody }), { status: 500 });
+    return NextResponse.json(errorBody, { status: 500 });
   }
 }
