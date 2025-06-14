@@ -1,4 +1,4 @@
-import StyledComponentsRegistry from "@/lib/registry";
+import StyledComponentsRegistry from "../core/registry";
 import React, { FC, PropsWithChildren } from "react";
 import { getServerSession } from "next-auth";
 import AuthProvider from "./authProvider";
