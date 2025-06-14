@@ -9,17 +9,18 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  username String @unique
+  id       Int       @id @default(autoincrement())
+  username String    @unique
   password String
   Project  Project[]
 }
 
 model Project {
-  id    Int     @id @default(autoincrement())
+  id           Int      @id @default(autoincrement())
   title        String
   description  String
   technologies String[]
   userId       Int
+  images       String[]
   user         User     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
