@@ -1,6 +1,6 @@
-import { Project } from "@/types/project";
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient, Prisma } from "@/generated/prisma";
+import { Prisma, PrismaClient } from "@/generated/prisma";
+import { handlePrismaError } from "@/utils/prisma-error";
 
 const prisma = new PrismaClient();
 
@@ -22,15 +22,33 @@ export async function PATCH(
     });
 
     return NextResponse.json(updateProject, { status: 200 });
-  } catch (error) {
-    throw new Error("Internal Server Error " + error);
+  } catch (e) {
+    const { error, status } = handlePrismaError(e, "Update Project");
+    return NextResponse.json({ error }, { status });
   }
 }
 
-export function DELETE(request: NextRequest) {
+export async function DELETE({ params }: { params: Promise<{ id: string }> }) {
   try {
-    return new Response(JSON.stringify(""), { status: 200 });
-  } catch (error) {
-    throw new Error("Internal Server Error");
+    const id = Number((await params).id);
+
+    if (isNaN(id)) {
+      return NextResponse.json(
+        { error: "Insert a number as id" },
+        { status: 500 }
+      );
+    }
+
+    await prisma.project.delete({
+      where: { id },
+    });
+
+    return NextResponse.json(
+      { message: "Project deleted successfully" },
+      { status: 200 }
+    );
+  } catch (e) {
+    const { error, status } = handlePrismaError(e, "Delete Project");
+    return NextResponse.json({ error }, { status });
   }
 }

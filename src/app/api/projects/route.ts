@@ -1,6 +1,7 @@
 import { Project } from "@/types/project";
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient, Prisma } from "@/generated/prisma";
+import { handlePrismaError } from "@/utils/prisma-error";
 
 const prisma = new PrismaClient();
 
@@ -38,7 +39,8 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(newProject, { status: 200 });
-  } catch (error) {
-    throw new Error("Internal Server Error" + error);
+  } catch (e) {
+    const { error, status } = handlePrismaError(e, "Create Project");
+    return NextResponse.json({ error }, { status });
   }
 }
