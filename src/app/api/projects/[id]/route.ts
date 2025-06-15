@@ -1,20 +1,41 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Prisma, PrismaClient } from "@/generated/prisma";
+import { PrismaClient } from "@/generated/prisma";
 import { handlePrismaError } from "@/utils/prisma-error";
+import { UpdateProjectI } from "@/types/project";
+import { ErrorI } from "@/types/api";
 
 const prisma = new PrismaClient();
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: Promise<{ id: number }> }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const id = (await params).id;
-    const body = await request.json();
+    const id = Number((await params)?.id);
+
+    if (isNaN(id)) {
+      const error: ErrorI = {
+        status: 500,
+        error: "Insert a number as id",
+      };
+
+      return NextResponse.json({ error }, { status: 500 });
+    }
+
+    const body: UpdateProjectI = await request.json();
+
+    const { userId, ...data } = body;
 
     const updateProject = await prisma.project.update({
-      where: { id },
-      data: body,
+      where: { id: Number(id) },
+      data: {
+        ...data,
+        user: {
+          connect: {
+            id: body.userId,
+          },
+        },
+      },
     });
 
     return NextResponse.json(updateProject, { status: 200 });

@@ -22,7 +22,7 @@ class UsersService {
       const data = await response.json();
 
       return data;
-    } catch (e: unknown) {
+    } catch (e) {
       return e as ErrorI;
     }
   }
