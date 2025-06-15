@@ -1,6 +1,7 @@
 "use client";
 
 import CreateUser from "@/components/forms/user/createUser";
+import InputImage from "@/components/inputs/inputImage";
 import UsersService from "@/services/users";
 import { signIn, signOut, useSession } from "next-auth/react";
 import styled from "styled-components";
@@ -24,7 +25,7 @@ export default function Home() {
 
   return (
     <Container>
-      <CreateUser />
+      <InputImage />
     </Container>
   );
 }
