@@ -14,17 +14,17 @@ export default function Home() {
 
   async function doLogin() {
     await signIn("credentials", {
-      email: "bruno.afonso94@hotmail.com",
-      password: "password",
+      username: "bruno",
+      password: "nowishashed",
       redirect: false,
     });
   }
 
   return (
     <Container>
-      {/* <button onClick={() => doLogin()}>Login</button>
+      <button onClick={() => doLogin()}>Login</button>
       <button onClick={() => signOut()}>Logout</button>
-      <span>User: {session?.user?.name}</span> */}
+      <span>User: {session?.user?.name}</span>
     </Container>
   );
 }

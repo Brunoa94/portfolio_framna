@@ -1,13 +1,7 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { PrismaClient, Prisma } from "@/generated/prisma";
-import { User } from "@/types/auth";
-import { ErrorI, SuccessI } from "@/types/api";
+import { PrismaClient, Prisma, User } from "@/generated/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import { handlePrismaError } from "@/utils/prisma-error";
-
-interface CreateUserI {
-  data: Prisma.UserCreateInput;
-}
+import { hashPassword } from "@/lib/passwords";
 
 const prisma = new PrismaClient();
 
@@ -27,8 +21,14 @@ export async function POST(request: NextRequest, response: NextResponse) {
     const body = await request.json();
     const { username, password } = body;
 
-    const newUser: User = await prisma.user.create<CreateUserI>({
-      data: { username, password },
+    const hashedPassword = await hashPassword(password);
+
+    let newUser = await prisma.user.create({
+      data: { username, password: hashedPassword },
+      select: {
+        id: true,
+        username: true,
+      },
     });
 
     return NextResponse.json(newUser, { status: 200 });

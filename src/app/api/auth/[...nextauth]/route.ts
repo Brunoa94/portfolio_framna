@@ -3,28 +3,45 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import type { NextAuthOptions, User } from "next-auth";
+import { PrismaClient } from "@/generated/prisma";
+import { comparePasswords } from "@/lib/passwords";
 
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "Code", type: "text" },
+        username: { label: "Code", type: "text" },
         password: { label: "Password", type: "text" },
       },
       async authorize(credentials) {
-        console.log("PASSEI AQUI");
-        // const authService = await new AuthService().authenticate(credentials?.email || "", credentials?.match_id || "");
+        const prisma = new PrismaClient();
 
-        // if () {
-        //   throw new Error("Login falhou");
-        // }
+        try {
+          const user = await prisma.user.findFirst({
+            where: { username: credentials?.username },
+          });
 
-        return {
-          id: "1234",
-          name: "Bruno Afonso",
-          email: credentials?.email,
-        };
+          if (!user) {
+            throw new Error("Authentication failed");
+          }
+
+          const isAuthorized = await comparePasswords(
+            credentials?.password || "",
+            user?.password || ""
+          );
+
+          if (!isAuthorized) {
+            throw new Error("Authentication failed");
+          }
+
+          return {
+            id: user?.id || 0,
+            username: user?.username || "",
+          };
+        } catch {
+          throw new Error("Authentication failed");
+        }
       },
     }),
   ],
@@ -41,8 +58,7 @@ export const authOptions: NextAuthOptions = {
         user: {
           ...session.user,
           id: token.id,
-          email: token.email,
-          name: token.name,
+          username: token.username,
         },
       };
     },
@@ -52,8 +68,7 @@ export const authOptions: NextAuthOptions = {
         return {
           ...token,
           id: u.id,
-          email: u.email,
-          name: u.name,
+          username: u.username,
         };
       }
       return token;
