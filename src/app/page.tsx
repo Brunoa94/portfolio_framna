@@ -1,5 +1,7 @@
 "use client";
 
+import CreateUser from "@/components/forms/user/createUser";
+import UsersService from "@/services/users";
 import { signIn, signOut, useSession } from "next-auth/react";
 import styled from "styled-components";
 
@@ -22,9 +24,7 @@ export default function Home() {
 
   return (
     <Container>
-      <button onClick={() => doLogin()}>Login</button>
-      <button onClick={() => signOut()}>Logout</button>
-      <span>User: {session?.user?.name}</span>
+      <CreateUser />
     </Container>
   );
 }

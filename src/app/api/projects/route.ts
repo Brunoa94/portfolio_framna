@@ -1,6 +1,5 @@
-import { Project } from "@/types/project";
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient, Prisma } from "@/generated/prisma";
+import { PrismaClient, Prisma, Project } from "@/generated/prisma";
 import { handlePrismaError } from "@/utils/prisma-error";
 
 const prisma = new PrismaClient();

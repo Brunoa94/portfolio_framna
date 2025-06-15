@@ -6,15 +6,11 @@ const prisma = new PrismaClient();
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: Promise<{ id: number }> }
 ) {
   try {
-    const id = Number((await params).id);
+    const id = (await params).id;
     const body = await request.json();
-
-    if (isNaN(id)) {
-      return NextResponse.json({ error: "Invalid user ID" }, { status: 400 });
-    }
 
     const updateProject = await prisma.project.update({
       where: { id },
@@ -28,16 +24,9 @@ export async function PATCH(
   }
 }
 
-export async function DELETE({ params }: { params: Promise<{ id: string }> }) {
+export async function DELETE({ params }: { params: Promise<{ id: number }> }) {
   try {
-    const id = Number((await params).id);
-
-    if (isNaN(id)) {
-      return NextResponse.json(
-        { error: "Insert a number as id" },
-        { status: 500 }
-      );
-    }
+    const id = (await params).id;
 
     await prisma.project.delete({
       where: { id },

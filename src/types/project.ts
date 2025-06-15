@@ -1,8 +1,4 @@
-export interface Project {
-  id: number;
-  title: string;
-  description: string;
-  technologies: string[];
-  userId: number;
-  images?: string[];
-}
+import { Prisma } from "@/generated/prisma";
+
+export interface CreateProjectI extends Prisma.ProjectCreateInput {}
+export interface UpdateProjectI extends Omit<Prisma.ProjectUpdateInput, "id"> {}
