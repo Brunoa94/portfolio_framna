@@ -8,10 +8,10 @@ import { Title } from "@/components/globals/fonts";
 import InputPassword from "@/components/inputs/inputPassword";
 
 interface CreateUserI {
-  handleToLogin: (value: boolean) => void;
+  handleOpen: () => void;
 }
 
-const CreateUser = ({ handleToLogin }: CreateUserI) => {
+const CreateUserForm = ({ handleOpen }: CreateUserI) => {
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -33,9 +33,9 @@ const CreateUser = ({ handleToLogin }: CreateUserI) => {
         console.log("ERROR");
       }
 
-      handleToLogin(false);
+      handleOpen();
     },
-    [handleToLogin]
+    [handleOpen]
   );
 
   return (
@@ -48,4 +48,4 @@ const CreateUser = ({ handleToLogin }: CreateUserI) => {
   );
 };
 
-export default CreateUser;
+export default CreateUserForm;

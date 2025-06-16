@@ -1,3 +1,5 @@
+"use client";
+
 import styled from "styled-components";
 
 export const SubmitButton = styled.button`
@@ -12,4 +14,18 @@ export const SubmitButton = styled.button`
   border: none;
   cursor: pointer;
   margin-top: 12px;
+`;
+
+export const ActionButton = styled.button<{ color?: string; margin?: string }>`
+  padding: 0 24px;
+  height: 32px;
+  background-color: ${(props) => props.color};
+  font-family: "Roboto Mono", sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin: ${(props) => props.margin && props.margin};
 `;

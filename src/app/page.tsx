@@ -2,7 +2,7 @@
 import CreateProject from "@/components/forms/project/createProject";
 import UpdateProjectForm from "@/components/forms/project/updateProject";
 import CreateUser from "@/components/forms/user/createUser";
-import InputImage from "@/components/inputs/inputImage";
+import InputImage from "@/components/inputs/inputImage/inputImage";
 import ProjectsService from "@/services/projects";
 import UsersService from "@/services/users";
 import { ProjectI } from "@/types/project";

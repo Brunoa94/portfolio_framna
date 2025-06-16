@@ -1,5 +1,8 @@
 import { ResponseImageI } from "@/types/api";
 import React, { useCallback, useRef, useState } from "react";
+import * as S from "./inputImage.styles";
+import Image from "next/image";
+import { ImagePlus } from "lucide-react";
 
 interface InputImageI {
   images?: string[];
@@ -8,11 +11,9 @@ interface InputImageI {
 
 const InputImage = ({ images, updateForm }: InputImageI) => {
   const [imagesUploaded, setImagesUploaded] = useState<string[]>(images || []);
-  const [message, setMessage] = useState("");
 
   const handleUpload = useCallback(async (file: File | null) => {
     if (!file) {
-      setMessage("Please select an image.");
       return;
     }
 
@@ -35,17 +36,29 @@ const InputImage = ({ images, updateForm }: InputImageI) => {
   }, []);
 
   return (
-    <div className="p-4 border rounded max-w-md space-y-4">
-      {imagesUploaded?.map((imageString: string) => (
-        <img src={imageString} style={{ width: "50px", height: "50px" }} />
-      ))}
-      <input
+    <S.Col>
+      <S.Row>
+        {imagesUploaded?.map((imageString: string) => (
+          <Image
+            key={`id-${imageString}`}
+            src={imageString}
+            width={80}
+            height={80}
+            style={{ borderRadius: "8px" }}
+            alt="Image Uploaded"
+          />
+        ))}
+      </S.Row>
+      <S.Label htmlFor="image-loader">
+        <ImagePlus size={36} color="#590c97" />
+      </S.Label>
+      <S.Input
         type="file"
         accept="image/*"
         onChange={(e) => handleUpload(e.target.files?.[0] || null)}
+        id="image-loader"
       />
-      {message && <p>{message}</p>}
-    </div>
+    </S.Col>
   );
 };
 

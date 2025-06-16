@@ -1,4 +1,4 @@
-import InputImage from "@/components/inputs/inputImage";
+import InputImage from "@/components/inputs/inputImage/inputImage";
 import InputText from "@/components/inputs/inputText";
 import ProjectsService from "@/services/projects";
 import { CreateProjectI, ProjectI, UpdateProjectI } from "@/types/project";

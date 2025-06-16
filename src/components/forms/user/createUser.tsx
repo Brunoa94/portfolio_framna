@@ -3,7 +3,7 @@ import UsersService from "@/services/users";
 import { CreateUserI } from "@/types/user";
 import React, { FormEvent, useCallback } from "react";
 
-const CreateUser = () => {
+const CreateUserForm = () => {
   const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -29,4 +29,4 @@ const CreateUser = () => {
   );
 };
 
-export default CreateUser;
+export default CreateUserForm;

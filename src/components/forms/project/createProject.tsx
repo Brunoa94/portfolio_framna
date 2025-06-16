@@ -1,11 +1,14 @@
 "use client";
-import InputImage from "@/components/inputs/inputImage";
+import { SubmitButton } from "@/components/globals/buttons";
+import InputImage from "@/components/inputs/inputImage/inputImage";
 import InputText from "@/components/inputs/inputText";
 import ProjectsService from "@/services/projects";
 import { CreateProjectI } from "@/types/project";
 import React, { FormEvent, useCallback, useRef } from "react";
+import * as S from "../forms.styles";
+import { Title } from "@/components/globals/fonts";
 
-const CreateProject = () => {
+const CreateProjectForm = () => {
   const imagesUrlRef = useRef<string[]>([]);
 
   const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
@@ -40,13 +43,14 @@ const CreateProject = () => {
   }, []);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <S.Form onSubmit={handleSubmit}>
+      <Title>Create Project</Title>
       <InputText id="title" name="Title" />
       <InputText id="description" name="Description" />
       <InputImage updateForm={uploadImages} />
-      <button type="submit">Submit</button>
-    </form>
+      <SubmitButton type="submit">Submit</SubmitButton>
+    </S.Form>
   );
 };
 
-export default CreateProject;
+export default CreateProjectForm;
