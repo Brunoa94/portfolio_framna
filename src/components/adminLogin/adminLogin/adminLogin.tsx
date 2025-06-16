@@ -3,10 +3,10 @@
 import React, { useCallback, useState } from "react";
 import * as S from "./adminLogin.styles";
 import { FullscreenLayer } from "@/components/common/fullscreenLayer/fullscreenLayer.styles";
-import LoginAdmin from "@/components/forms/user/loginAdmin";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { LogOut } from "lucide-react";
+import LoginAdmin from "../loginAdmin/loginAdmin";
 
 const AdminLogin = () => {
   const [toLogin, setToLogin] = useState<boolean>(false);
@@ -28,20 +28,7 @@ const AdminLogin = () => {
           </S.LogoutButton>
         </S.Row>
       )}
-      {!session && (
-        <S.LoginButton
-          onClick={() => {
-            setToLogin(true);
-          }}
-        >
-          Login as Admin
-        </S.LoginButton>
-      )}
-      {toLogin && (
-        <FullscreenLayer>
-          <LoginAdmin handleToLogin={setToLogin} />
-        </FullscreenLayer>
-      )}
+      {!session && <LoginAdmin />}
     </>
   );
 };

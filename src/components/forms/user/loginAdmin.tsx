@@ -7,14 +7,15 @@ import { SubmitButton } from "@/components/globals/buttons";
 import { Title } from "@/components/globals/fonts";
 import InputPassword from "@/components/inputs/inputPassword";
 
-interface CreateUserI {
-  handleOpen: () => void;
+interface LoginAdminI {
+  handleClose: () => void;
 }
 
-const CreateUserForm = ({ handleOpen }: CreateUserI) => {
+const LoginAdminForm = ({ handleClose }: LoginAdminI) => {
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
+      e.stopPropagation();
 
       const form = new FormData(e.currentTarget);
 
@@ -33,9 +34,9 @@ const CreateUserForm = ({ handleOpen }: CreateUserI) => {
         console.log("ERROR");
       }
 
-      handleOpen();
+      handleClose();
     },
-    [handleOpen]
+    [handleClose]
   );
 
   return (
@@ -48,4 +49,4 @@ const CreateUserForm = ({ handleOpen }: CreateUserI) => {
   );
 };
 
-export default CreateUserForm;
+export default LoginAdminForm;
