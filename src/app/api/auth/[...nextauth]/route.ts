@@ -18,10 +18,12 @@ export const authOptions: NextAuthOptions = {
         const prisma = new PrismaClient();
 
         try {
+          console.log("USERNAME: " + credentials?.username);
+          console.log("PASSWORD: " + credentials?.password);
           const user = await prisma.user.findFirst({
             where: { username: credentials?.username },
           });
-
+          console.log("USER: " + JSON.stringify(user));
           if (!user) {
             throw new Error("Authentication failed");
           }
@@ -30,6 +32,7 @@ export const authOptions: NextAuthOptions = {
             credentials?.password || "",
             user?.password || ""
           );
+          console.log("IS AUTHORIZED: " + isAuthorized);
 
           if (!isAuthorized) {
             throw new Error("Authentication failed");

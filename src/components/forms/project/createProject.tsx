@@ -3,7 +3,7 @@ import InputImage from "@/components/inputs/inputImage";
 import InputText from "@/components/inputs/inputText";
 import ProjectsService from "@/services/projects";
 import { CreateProjectI } from "@/types/project";
-import React, { FormEvent, useCallback, useRef, useState } from "react";
+import React, { FormEvent, useCallback, useRef } from "react";
 
 const CreateProject = () => {
   const imagesUrlRef = useRef<string[]>([]);
@@ -41,8 +41,8 @@ const CreateProject = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <InputText id="title" />
-      <InputText id="description" />
+      <InputText id="title" name="Title" />
+      <InputText id="description" name="Description" />
       <InputImage updateForm={uploadImages} />
       <button type="submit">Submit</button>
     </form>

@@ -2,6 +2,11 @@
 
 import styled from "styled-components";
 
+export const LogoutButton = styled.button`
+  border: none;
+  background: none;
+`;
+
 export const LoginButton = styled.button`
     padding: 16px 24px;
     border-radius : 8px
@@ -20,4 +25,10 @@ export const LoginButton = styled.button`
         scale: 1.1;
         transition: scale ease-in-out 0.2s;
     }
+`;
+
+export const Row = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
 `;

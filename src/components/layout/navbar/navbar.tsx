@@ -22,7 +22,7 @@ const Navbar = () => {
     <S.Navbar>
       <S.List>
         {options.map((option: NavbarOption) => (
-          <S.Option>
+          <S.Option key={`option-${option.id}`}>
             <Link href={option.id}>{option.name}</Link>
           </S.Option>
         ))}

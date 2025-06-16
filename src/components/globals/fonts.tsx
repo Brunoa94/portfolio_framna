@@ -2,9 +2,10 @@
 
 import styled from "styled-components";
 
-export const Title = styled.h1`
+export const Title = styled.h1<{ hasmargin?: string }>`
   font-family: "Roboto Mono", sans-serif;
   font-weight: bold;
+  margin: ${(props) => props.hasmargin};
 `;
 
 export const Section = styled.section`
