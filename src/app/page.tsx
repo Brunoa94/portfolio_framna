@@ -20,19 +20,19 @@ export default function Home() {
   const { data: session } = useSession();
   const [projects, setProjects] = useState<ProjectI[]>([]);
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response: ProjectI[] = await ProjectsService.getProjects();
-        setProjects(response);
-        console.log("RESPONSE: " + JSON.stringify(response[0]));
-      } catch (e) {
-        console.log("ERROR: " + JSON.stringify(e));
-      }
-    };
+  // useEffect(() => {
+  //   const fetchProjects = async () => {
+  //     try {
+  //       const response: ProjectI[] = await ProjectsService.getProjects();
+  //       setProjects(response);
+  //       console.log("RESPONSE: " + JSON.stringify(response[0]));
+  //     } catch (e) {
+  //       console.log("ERROR: " + JSON.stringify(e));
+  //     }
+  //   };
 
-    fetchProjects();
-  }, []);
+  //   fetchProjects();
+  // }, []);
 
   async function doLogin() {
     await signIn("credentials", {
@@ -42,9 +42,5 @@ export default function Home() {
     });
   }
 
-  return (
-    <Container>
-      {projects.length > 0 && <UpdateProjectForm project={projects[0]} />}
-    </Container>
-  );
+  return <></>;
 }
