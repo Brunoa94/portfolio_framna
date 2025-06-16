@@ -2,7 +2,7 @@ import React from "react";
 
 import * as S from "./header.styles";
 import Navbar from "../navbar/navbar";
-import AdminLogin from "../../adminLogin/adminActions/adminActions";
+import AdminLogin from "../../adminLogin/adminButton/adminButton";
 
 const Header = () => {
   return (

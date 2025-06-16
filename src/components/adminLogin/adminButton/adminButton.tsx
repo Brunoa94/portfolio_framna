@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useCallback, useState } from "react";
-import * as S from "./adminActions.styles";
-import { FullscreenLayer } from "@/components/common/fullscreenLayer/fullscreenLayer.styles";
+import * as S from "./adminButton.styles";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { LogOut } from "lucide-react";
