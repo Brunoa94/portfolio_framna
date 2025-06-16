@@ -19,7 +19,7 @@ const ProjectBox = ({ fromAdmin, project }: ProjectBoxI) => {
           width={80}
           height={80}
           alt="Project image"
-          src="/purple_watercolour_background_corners.jpg"
+          src={project.images[0]}
           style={{ borderRadius: "8px" }}
         />
       ) : (

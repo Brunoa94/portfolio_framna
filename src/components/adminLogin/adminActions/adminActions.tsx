@@ -1,15 +1,14 @@
 "use client";
 
 import React, { useCallback, useState } from "react";
-import * as S from "./adminLogin.styles";
+import * as S from "./adminActions.styles";
 import { FullscreenLayer } from "@/components/common/fullscreenLayer/fullscreenLayer.styles";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { LogOut } from "lucide-react";
 import LoginAdmin from "../loginAdmin/loginAdmin";
 
-const AdminLogin = () => {
-  const [toLogin, setToLogin] = useState<boolean>(false);
+const AdminActions = () => {
   const { data: session } = useSession();
 
   const handleSignOut = useCallback(() => {
@@ -33,4 +32,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default AdminActions;
