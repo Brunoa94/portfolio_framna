@@ -11,9 +11,12 @@ class ProjectsService {
 
   static async getProjects(): Promise<ProjectI[]> {
     try {
-      const response = await fetch("/api/projects", {
-        method: "GET",
-      });
+      const response = await fetch(
+        `${process.env.NEXT_HOSTNAME}/api/projects`,
+        {
+          method: "GET",
+        }
+      );
 
       if (!response.ok) {
         const error = await response.json();

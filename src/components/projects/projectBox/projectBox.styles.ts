@@ -46,6 +46,7 @@ export const Technologies = styled.ul`
   display: flex;
   align-items: center;
   gap: 6px;
+  list-style: none;
 `;
 
 export const Technology = styled.li`

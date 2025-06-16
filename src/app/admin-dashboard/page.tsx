@@ -1,11 +1,14 @@
-import React, { useCallback } from "react";
+import React, { use, useCallback } from "react";
 import * as S from "./page.styles";
 import { Paragraph, Title } from "@/components/globals/fonts";
 import ProjectBox from "@/components/projects/projectBox/projectBox";
 import CreateProjectButton from "@/components/projects/createProjectButton/createProjectButton";
+import ProjectsService from "@/services/projects";
+import { ProjectI } from "@/types/project";
 
 export default function AdminDashboard() {
-  const fetchProjects = useCallback(() => {}, []);
+  const projects = use(ProjectsService.getProjects());
+
   return (
     <S.Container>
       <S.Section>
@@ -24,10 +27,13 @@ export default function AdminDashboard() {
           <CreateProjectButton />
         </S.Row>
         <S.List>
-          <ProjectBox fromAdmin />
-          <ProjectBox fromAdmin />
-          <ProjectBox fromAdmin />
-          <ProjectBox fromAdmin />
+          {projects.map((project: ProjectI) => (
+            <ProjectBox
+              key={`project-id-${project.id}`}
+              project={project}
+              fromAdmin
+            />
+          ))}
         </S.List>
       </S.Section>
     </S.Container>
