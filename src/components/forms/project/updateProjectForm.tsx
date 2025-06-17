@@ -1,14 +1,17 @@
+import { SubmitButton } from "@/components/globals/buttons";
 import InputImage from "@/components/inputs/inputImage/inputImage";
 import InputText from "@/components/inputs/inputText";
 import ProjectsService from "@/services/projects";
-import { CreateProjectI, ProjectI, UpdateProjectI } from "@/types/project";
+import { ProjectI, UpdateProjectI } from "@/types/project";
 import React, { FormEvent, useCallback, useRef, useState } from "react";
+import { Form } from "../forms.styles";
 
 interface UpdateProjectFormI {
   project: ProjectI;
+  handleClose: () => void;
 }
 
-const UpdateProjectForm = ({ project }: UpdateProjectFormI) => {
+const UpdateProjectForm = ({ project, handleClose }: UpdateProjectFormI) => {
   const imagesUrlRef = useRef<string[]>(project.images);
 
   const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
@@ -31,7 +34,7 @@ const UpdateProjectForm = ({ project }: UpdateProjectFormI) => {
 
     try {
       const response = await ProjectsService.updateProject(1, updateProject);
-
+      handleClose();
       return response;
     } catch (e) {
       throw new Error("Something went wrong");
@@ -43,12 +46,16 @@ const UpdateProjectForm = ({ project }: UpdateProjectFormI) => {
   }, []);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <InputText id="title" value={project.title} />
-      <InputText id="description" value={project.description} />
+    <Form onSubmit={handleSubmit}>
+      <InputText name="Title" id="title" value={project.title} />
+      <InputText
+        name="Description"
+        id="description"
+        value={project.description}
+      />
       <InputImage images={project.images} updateForm={uploadImages} />
-      <button type="submit">Submit</button>
-    </form>
+      <SubmitButton type="submit">Submit</SubmitButton>
+    </Form>
   );
 };
 

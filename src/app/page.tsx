@@ -1,6 +1,6 @@
 "use client";
 import CreateProject from "@/components/forms/project/createProject";
-import UpdateProjectForm from "@/components/forms/project/updateProject";
+import UpdateProjectForm from "@/components/forms/project/updateProjectForm";
 import CreateUser from "@/components/forms/user/createUser";
 import InputImage from "@/components/inputs/inputImage/inputImage";
 import ProjectsService from "@/services/projects";

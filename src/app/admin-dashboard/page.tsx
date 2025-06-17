@@ -1,14 +1,10 @@
-import React, { use, useCallback } from "react";
+import React from "react";
 import * as S from "./page.styles";
 import { Paragraph, Title } from "@/components/globals/fonts";
-import ProjectBox from "@/components/projects/projectBox/projectBox";
-import CreateProjectButton from "@/components/projects/createProjectButton/createProjectButton";
-import ProjectsService from "@/services/projects";
-import { ProjectI } from "@/types/project";
+import ProjectList from "@/components/projects/projectList/projectList";
+import CreateProjectButton from "@/components/projects/createProjectButton";
 
 export default function AdminDashboard() {
-  const projects = use(ProjectsService.getProjects());
-
   return (
     <S.Container>
       <S.Section>
@@ -26,15 +22,7 @@ export default function AdminDashboard() {
           <Title>Projects</Title>
           <CreateProjectButton />
         </S.Row>
-        <S.List>
-          {projects.map((project: ProjectI) => (
-            <ProjectBox
-              key={`project-id-${project.id}`}
-              project={project}
-              fromAdmin
-            />
-          ))}
-        </S.List>
+        <ProjectList fromAdmin />
       </S.Section>
     </S.Container>
   );
