@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Nunito, Roboto_Mono } from "next/font/google";
+import { Nunito, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import GlobalProviders from "@/providers/globalProviders";
 import * as S from "./layout.styles";
