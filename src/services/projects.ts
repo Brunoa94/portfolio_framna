@@ -7,7 +7,27 @@ import {
 } from "@/types/project";
 
 class ProjectsService {
-  constructor() {}
+  static async deleteProject(projectId: number) {
+    try {
+      const response = await fetch(`/api/projects/${projectId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        return error;
+      }
+
+      const data = await response.json();
+
+      return data;
+    } catch (e) {
+      return e as ErrorI;
+    }
+  }
 
   static async getProjects(): Promise<ProjectI[]> {
     try {

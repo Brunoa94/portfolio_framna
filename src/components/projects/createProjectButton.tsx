@@ -15,7 +15,7 @@ const CreateProject = () => {
       </ActionButton>
       {isOpen && (
         <FullscreenLayer handleClose={closeOnFullscreen}>
-          <CreateProjectForm />
+          <CreateProjectForm handleClose={close} />
         </FullscreenLayer>
       )}
     </>

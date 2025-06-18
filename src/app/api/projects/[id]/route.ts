@@ -2,25 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@/generated/prisma";
 import { handlePrismaError } from "@/utils/prisma-error";
 import { UpdateProjectI } from "@/types/project";
-import { ErrorI } from "@/types/api";
 
 const prisma = new PrismaClient();
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  context: { params: { id: string } }
 ) {
   try {
-    const id = Number((await params)?.id);
-
-    if (isNaN(id)) {
-      const error: ErrorI = {
-        status: 500,
-        error: "Insert a number as id",
-      };
-
-      return NextResponse.json({ error }, { status: 500 });
-    }
+    const { params } = context;
+    const { id } = params;
 
     const body: UpdateProjectI = await request.json();
 
@@ -32,7 +23,7 @@ export async function PATCH(
         ...data,
         user: {
           connect: {
-            id: body.userId,
+            id: userId,
           },
         },
       },
@@ -45,13 +36,16 @@ export async function PATCH(
   }
 }
 
-export async function DELETE({ params }: { params: Promise<{ id: number }> }) {
-  try {
-    const id = (await params).id;
+export async function DELETE(context: { params: { id: string } }) {
+  const { params } = context;
+  const { id } = params;
 
-    await prisma.project.delete({
-      where: { id },
+  try {
+    const response = await prisma.project.delete({
+      where: { id: Number(id) },
     });
+
+    console.log("RESPONSE: " + JSON.stringify(response));
 
     return NextResponse.json(
       { message: "Project deleted successfully" },

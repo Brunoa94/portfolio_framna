@@ -2,11 +2,10 @@ import React, { memo } from "react";
 import * as S from "./projectBox.styles";
 import Image from "next/image";
 import { ItemTitle, Paragraph } from "@/components/globals/fonts";
-import { ActionButton } from "@/components/globals/buttons";
 import { ProjectI } from "@/types/project";
 import { ImageOff } from "lucide-react";
-import UpdateProjectForm from "@/components/forms/project/updateProjectForm";
 import UpdateProjectButton from "../updateProjectButton";
+import DeleteProjectButton from "../deleteProjectButton";
 
 interface ProjectBoxI {
   fromAdmin?: boolean;
@@ -46,7 +45,7 @@ const ProjectBox = ({ fromAdmin, project }: ProjectBoxI) => {
           <S.Row>{ProjectDetails}</S.Row>
           <S.Row>
             <UpdateProjectButton project={project} />
-            <ActionButton color="red">Delete</ActionButton>
+            <DeleteProjectButton project={project} />
           </S.Row>
         </S.Col>
       </S.ProjectItem>

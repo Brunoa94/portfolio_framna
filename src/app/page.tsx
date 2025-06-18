@@ -1,13 +1,7 @@
 "use client";
-import CreateProject from "@/components/forms/project/createProject";
-import UpdateProjectForm from "@/components/forms/project/updateProjectForm";
-import CreateUser from "@/components/forms/user/createUser";
-import InputImage from "@/components/inputs/inputImage/inputImage";
-import ProjectsService from "@/services/projects";
-import UsersService from "@/services/users";
 import { ProjectI } from "@/types/project";
-import { signIn, signOut, useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { signIn, useSession } from "next-auth/react";
+import { useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
