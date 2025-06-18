@@ -1,6 +1,4 @@
-import { Prisma } from "@/generated/prisma";
-
-export interface ProjectI extends Prisma.ProjectGetPayload<{}> {}
+import { Prisma, Project } from "@/generated/prisma";
 
 export interface CreateProjectI
   extends Omit<Prisma.ProjectCreateInput, "user"> {
@@ -13,5 +11,5 @@ export interface UpdateProjectI
 }
 
 export interface ProjectsI {
-  projects: ProjectI[];
+  projects: Project[];
 }

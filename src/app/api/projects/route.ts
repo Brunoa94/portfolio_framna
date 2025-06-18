@@ -8,12 +8,12 @@ interface CreateProjectI {
   data: Prisma.ProjectCreateInput;
 }
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const projects: Project[] = await prisma.project.findMany();
 
     return new Response(JSON.stringify({ projects }), { status: 200 });
-  } catch (error) {
+  } catch {
     throw new Error("Internal Server Error");
   }
 }

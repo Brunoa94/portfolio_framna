@@ -1,12 +1,12 @@
-import { PrismaClient, Prisma } from "@/generated/prisma";
+import { PrismaClient } from "@/generated/prisma";
 import { handlePrismaError } from "@/utils/prisma-error";
 import { NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
-export async function DELETE({ params }: { params: Promise<{ id: number }> }) {
+export async function DELETE({ params }: { params: { id: number } }) {
   try {
-    const id = (await params)?.id;
+    const { id } = params;
 
     await prisma.user.delete({ where: { id } });
 

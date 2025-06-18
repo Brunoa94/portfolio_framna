@@ -4,31 +4,8 @@ import styled from "styled-components";
 
 export const Container = styled.main`
   display: flex;
-  width: 100%;
-  max-width: 900px;
-  flex-direction: column;
-  gap: 12px;
-  padding: 32px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 24px;
-`;
-
-export const Section = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 24px;
-`;
-
-export const List = styled.ul`
-  display: flex;
-  flex-direction: column;
+  align-items: flex-start;
   gap: 32px;
   width: 100%;
-`;
-
-export const Row = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
+  justify-content: center;
 `;

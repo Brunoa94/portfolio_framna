@@ -7,11 +7,10 @@ const prisma = new PrismaClient();
 
 export async function PATCH(
   request: NextRequest,
-  context: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { params } = context;
-    const { id } = params;
+    const { id } = await params;
 
     const body: UpdateProjectI = await request.json();
 
@@ -36,16 +35,14 @@ export async function PATCH(
   }
 }
 
-export async function DELETE(context: { params: { id: string } }) {
+export async function DELETE(context: { params: { id: number } }) {
   const { params } = context;
   const { id } = params;
 
   try {
-    const response = await prisma.project.delete({
-      where: { id: Number(id) },
+    await prisma.project.delete({
+      where: { id },
     });
-
-    console.log("RESPONSE: " + JSON.stringify(response));
 
     return NextResponse.json(
       { message: "Project deleted successfully" },

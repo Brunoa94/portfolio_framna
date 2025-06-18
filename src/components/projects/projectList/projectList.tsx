@@ -1,8 +1,8 @@
 import ProjectsService from "@/services/projects";
 import React, { use } from "react";
 import * as S from "./projectList.styles";
-import { ProjectI } from "@/types/project";
 import ProjectBox from "../projectBox/projectBox";
+import { Project } from "@/generated/prisma";
 
 interface ProjectListI {
   fromAdmin?: boolean;
@@ -13,7 +13,7 @@ const ProjectList = ({ fromAdmin }: ProjectListI) => {
 
   return (
     <S.ProjectsList>
-      {projects.map((project: ProjectI) => (
+      {projects.map((project: Project) => (
         <ProjectBox
           key={`project-id-${project.id}`}
           project={project}

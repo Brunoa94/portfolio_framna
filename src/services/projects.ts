@@ -1,10 +1,6 @@
+import { Project } from "@/generated/prisma";
 import { ErrorI } from "@/types/api";
-import {
-  CreateProjectI,
-  ProjectI,
-  ProjectsI,
-  UpdateProjectI,
-} from "@/types/project";
+import { CreateProjectI, ProjectsI, UpdateProjectI } from "@/types/project";
 
 class ProjectsService {
   static async deleteProject(projectId: number) {
@@ -29,7 +25,7 @@ class ProjectsService {
     }
   }
 
-  static async getProjects(): Promise<ProjectI[]> {
+  static async getProjects(): Promise<Project[]> {
     try {
       const response = await fetch(
         `${process.env.NEXT_HOSTNAME}/api/projects`,
@@ -45,7 +41,7 @@ class ProjectsService {
 
       const data: ProjectsI = await response.json();
 
-      return data.projects as ProjectI[];
+      return data.projects as Project[];
     } catch (e: unknown) {
       throw e as ErrorI;
     }
@@ -53,6 +49,7 @@ class ProjectsService {
 
   static async updateProject(projectId: number, updateProject: UpdateProjectI) {
     try {
+      console.log("ID: " + projectId);
       const response = await fetch(`/api/projects/${projectId}`, {
         method: "PATCH",
         headers: {

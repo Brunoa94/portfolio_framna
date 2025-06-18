@@ -4,28 +4,23 @@ import FullscreenLayer from "@/components/common/fullscreenLayer/fullscreenLayer
 import { ActionButton } from "@/components/globals/buttons";
 import useOpen from "@/hooks/useOpen";
 import React from "react";
-import UpdateProjectForm from "../forms/project/updateProjectForm";
-import { Project } from "@/generated/prisma";
+import CreateUserForm from "../forms/user/createUserForm";
 
-interface UpdateProjectButtonI {
-  project: Project;
-}
-
-const UpdateProjectButton = ({ project }: UpdateProjectButtonI) => {
+const CreateUserButton = () => {
   const { open, close, isOpen, closeOnFullscreen } = useOpen();
 
   return (
     <>
-      <ActionButton onClick={open} color="gray">
-        Update Project
+      <ActionButton margin="0 0 0 auto" color="green" onClick={open}>
+        Create User
       </ActionButton>
       {isOpen && (
         <FullscreenLayer handleClose={closeOnFullscreen}>
-          <UpdateProjectForm project={project} handleClose={close} />
+          <CreateUserForm handleClose={close} />
         </FullscreenLayer>
       )}
     </>
   );
 };
 
-export default UpdateProjectButton;
+export default CreateUserButton;

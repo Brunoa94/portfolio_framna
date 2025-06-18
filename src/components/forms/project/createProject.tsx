@@ -6,8 +6,8 @@ import InputText from "@/components/inputs/inputText";
 import ProjectsService from "@/services/projects";
 import { CreateProjectI } from "@/types/project";
 import React, { FormEvent, useCallback, useRef } from "react";
-import * as S from "../forms.styles";
 import { Title } from "@/components/globals/fonts";
+import { Form } from "../forms.styles";
 
 interface Props {
   handleClose: () => void;
@@ -51,13 +51,13 @@ const CreateProjectForm = ({ handleClose }: Props) => {
   }, []);
 
   return (
-    <S.Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Title>Create Project</Title>
       <InputText id="title" name="Title" />
       <InputText id="description" name="Description" />
       <InputImage updateForm={uploadImages} />
       <SubmitButton type="submit">Submit</SubmitButton>
-    </S.Form>
+    </Form>
   );
 };
 

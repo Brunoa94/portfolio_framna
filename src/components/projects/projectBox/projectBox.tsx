@@ -2,14 +2,14 @@ import React, { memo } from "react";
 import * as S from "./projectBox.styles";
 import Image from "next/image";
 import { ItemTitle, Paragraph } from "@/components/globals/fonts";
-import { ProjectI } from "@/types/project";
 import { ImageOff } from "lucide-react";
 import UpdateProjectButton from "../updateProjectButton";
 import DeleteProjectButton from "../deleteProjectButton";
+import { Project } from "@/generated/prisma";
 
 interface ProjectBoxI {
   fromAdmin?: boolean;
-  project: ProjectI;
+  project: Project;
 }
 
 const ProjectBox = ({ fromAdmin, project }: ProjectBoxI) => {

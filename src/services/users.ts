@@ -5,9 +5,9 @@ import { CreateUserI } from "@/types/user";
 class UsersService {
   constructor() {}
 
-  static async deleteUser(id: number): Promise<SuccessI | ErrorI> {
+  static async deleteUser(id: number): Promise<SuccessI> {
     try {
-      const response = await fetch(`/api/users/${id}/`, {
+      const response = await fetch(`/api/users/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -23,7 +23,7 @@ class UsersService {
 
       return data;
     } catch (e) {
-      return e as ErrorI;
+      throw e as ErrorI;
     }
   }
 
@@ -52,8 +52,11 @@ class UsersService {
 
   static async getUsers(): Promise<User[] | ErrorI> {
     try {
-      const response = await fetch("/api/users", {
+      const response = await fetch(`${process.env.NEXT_HOSTNAME}/api/users`, {
         method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
 
       if (!response.ok) {
@@ -65,7 +68,7 @@ class UsersService {
 
       return data as User[];
     } catch (e: unknown) {
-      return e as ErrorI;
+      throw e as ErrorI;
     }
   }
 }
