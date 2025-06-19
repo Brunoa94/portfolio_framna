@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import * as S from "./adminButton.styles";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";

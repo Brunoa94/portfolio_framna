@@ -12,3 +12,7 @@ export type ResponseImageI = {
   image: string;
   status: number;
 };
+
+export type DeleteImageI = {
+  imgSrc: string;
+};

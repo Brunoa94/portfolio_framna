@@ -49,7 +49,6 @@ class ProjectsService {
 
   static async updateProject(projectId: number, updateProject: UpdateProjectI) {
     try {
-      console.log("ID: " + projectId);
       const response = await fetch(`/api/projects/${projectId}`, {
         method: "PATCH",
         headers: {

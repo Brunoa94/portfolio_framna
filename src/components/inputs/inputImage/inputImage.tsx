@@ -1,8 +1,9 @@
 import { ResponseImageI } from "@/types/api";
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useState } from "react";
 import * as S from "./inputImage.styles";
 import Image from "next/image";
 import { ImagePlus } from "lucide-react";
+import ImagesService from "@/services/images";
 
 interface InputImageI {
   images?: string[];
@@ -12,28 +13,19 @@ interface InputImageI {
 const InputImage = ({ images, updateForm }: InputImageI) => {
   const [imagesUploaded, setImagesUploaded] = useState<string[]>(images || []);
 
-  const handleUpload = useCallback(async (file: File | null) => {
-    if (!file) {
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append("image", file);
-
-    try {
-      const res = await fetch("/api/upload-image", {
-        method: "POST",
-        body: formData,
-      });
-
-      const data: ResponseImageI = await res.json();
-
-      setImagesUploaded((prevImages) => [...prevImages, data.image]);
-      updateForm(data.image);
-
-      return data;
-    } catch (error) {}
-  }, []);
+  const handleUpload = useCallback(
+    async (file: File | null) => {
+      if (!file) {
+        return;
+      }
+      try {
+        const response: ResponseImageI = await ImagesService.uploadImage(file);
+        setImagesUploaded((prevImages) => [...prevImages, response.image]);
+        updateForm(response.image);
+      } catch {}
+    },
+    [updateForm]
+  );
 
   return (
     <S.Col>

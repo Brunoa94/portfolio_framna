@@ -6,6 +6,7 @@ import { ImageOff } from "lucide-react";
 import UpdateProjectButton from "../updateProjectButton";
 import DeleteProjectButton from "../deleteProjectButton";
 import { Project } from "@/generated/prisma";
+import ImagesButton from "../imagesButton";
 
 interface ProjectBoxI {
   fromAdmin?: boolean;
@@ -35,6 +36,7 @@ const ProjectBox = ({ fromAdmin, project }: ProjectBoxI) => {
           <S.Technology>Astro</S.Technology>
         </S.Technologies>
       </S.Col>
+      <ImagesButton images={project.images} project={project} />
     </>
   );
 
