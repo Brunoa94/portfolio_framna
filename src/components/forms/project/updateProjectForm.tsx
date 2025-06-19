@@ -36,14 +36,11 @@ const UpdateProjectForm = ({ project, handleClose }: UpdateProjectFormI) => {
       };
 
       try {
-        const response = await ProjectsService.updateProject(
-          project.id,
-          updateProject
-        );
+        await ProjectsService.updateProject(project.id, updateProject);
 
+        updateAlert({ message: "Project Updated", status: 200 });
         handleClose();
-
-        return response;
+        handleClose();
       } catch (error) {
         const e = error as ErrorI;
         updateAlert({ message: e.message, status: e.status });

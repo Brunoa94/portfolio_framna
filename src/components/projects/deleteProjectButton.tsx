@@ -18,6 +18,7 @@ const DeleteProjectButton = ({ project }: Props) => {
   const handleDelete = async () => {
     try {
       await ProjectsService.deleteProject(project.id);
+      updateAlert({ message: "Project Deleted", status: 200 });
     } catch (error) {
       const e = error as ErrorI;
       updateAlert({ message: e.message, status: e.status });

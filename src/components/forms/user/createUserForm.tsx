@@ -28,11 +28,10 @@ const CreateUserForm = ({ handleClose }: Props) => {
       };
 
       try {
-        const response = await UsersService.createUser(body);
+        await UsersService.createUser(body);
 
+        updateAlert({ message: "User created", status: 200 });
         handleClose();
-
-        return response;
       } catch (error) {
         const e = error as ErrorI;
         updateAlert({ message: e.message, status: e.status });

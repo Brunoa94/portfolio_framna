@@ -34,6 +34,8 @@ const LoginAdminForm = ({ handleClose }: LoginAdminI) => {
           password: body.password,
           redirect: false,
         });
+        updateAlert({ message: "Admin logged in", status: 200 });
+        handleClose();
       } catch {
         updateAlert({ message: "Authentication failed", status: 401 });
         handleClose();
