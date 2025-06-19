@@ -19,7 +19,6 @@ model Project {
   id           Int      @id @default(autoincrement())
   title        String
   description  String
-  technologies String[]
   userId       Int
   images       String[]
   user         User     @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)

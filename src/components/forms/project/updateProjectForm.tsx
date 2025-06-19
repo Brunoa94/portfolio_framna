@@ -9,6 +9,7 @@ import { Project } from "@/generated/prisma";
 import { ErrorI } from "@/types/api";
 import { useAlertStore } from "@/hooks/useAlertStore";
 import { AlertStore } from "@/store/alertStore";
+import InputTextArea from "@/components/inputs/inputTextArea";
 
 interface UpdateProjectFormI {
   project: Project;
@@ -26,14 +27,11 @@ const UpdateProjectForm = ({ project, handleClose }: UpdateProjectFormI) => {
 
       const title = String(form.get("title")) || "";
       const description = String(form.get("description")) || "";
-      const technologies: string[] =
-        (form.getAll("technologies") as string[]) || [];
       const images = imagesUrlRef.current || [];
 
       const updateProject: UpdateProjectI = {
         title,
         description,
-        technologies,
         images,
       };
 
@@ -62,7 +60,7 @@ const UpdateProjectForm = ({ project, handleClose }: UpdateProjectFormI) => {
   return (
     <Form onSubmit={handleSubmit}>
       <InputText name="Title" id="title" value={project.title} />
-      <InputText
+      <InputTextArea
         name="Description"
         id="description"
         value={project.description}

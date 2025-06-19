@@ -11,6 +11,7 @@ import { Form } from "../forms.styles";
 import { AlertStore } from "@/store/alertStore";
 import { useAlertStore } from "@/hooks/useAlertStore";
 import { ErrorI } from "@/types/api";
+import InputTextArea from "@/components/inputs/inputTextArea";
 interface Props {
   handleClose: () => void;
 }
@@ -26,14 +27,11 @@ const CreateProjectForm = ({ handleClose }: Props) => {
 
       const title = String(form.get("title")) || "";
       const description = String(form.get("description")) || "";
-      const technologies: string[] =
-        (form.getAll("technologies") as string[]) || [];
       const images = imagesUrlRef.current || [];
 
       const createProject: CreateProjectI = {
         title,
         description,
-        technologies,
         images,
         userId: 2,
       };
@@ -59,7 +57,7 @@ const CreateProjectForm = ({ handleClose }: Props) => {
     <Form onSubmit={handleSubmit}>
       <Title>Create Project</Title>
       <InputText id="title" name="Title" />
-      <InputText id="description" name="Description" />
+      <InputTextArea id="description" name="Description" />
       <InputImage updateForm={uploadImages} />
       <SubmitButton type="submit">Submit</SubmitButton>
     </Form>
