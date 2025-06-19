@@ -1,8 +1,10 @@
 "use client";
+
 import { useAlertStore } from "@/hooks/useAlertStore";
 import React, { useEffect, useState } from "react";
 import * as S from "./alertModal.styles";
 import { ItemTitle } from "@/components/globals/fonts";
+import { Check, CircleAlert } from "lucide-react";
 
 const AlertModal = () => {
   const storeAlert = useAlertStore((state) => state.alert);
@@ -17,14 +19,21 @@ const AlertModal = () => {
       }, 4000);
     }
   }, [storeAlert]);
-  console.log("MESSAGE: " + storeAlert.message);
+
   return (
     <S.AlertContainer isactive={isActive}>
-      <ItemTitle color="white">
-        <strong>Status: </strong>
-        {storeAlert.status}
-      </ItemTitle>
-      <ItemTitle color="white">{storeAlert.message}</ItemTitle>
+      <S.Row>
+        {storeAlert.status === 200 ? (
+          <Check size={32} color="#03c447" strokeWidth={2.25} />
+        ) : (
+          <CircleAlert size={32} color="#c40303" strokeWidth={2.25} />
+        )}
+        <ItemTitle>
+          <strong>Status: </strong>
+          {storeAlert.status}
+        </ItemTitle>
+      </S.Row>
+      <ItemTitle>{storeAlert.message}</ItemTitle>
     </S.AlertContainer>
   );
 };

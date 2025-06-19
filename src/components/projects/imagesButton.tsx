@@ -2,7 +2,7 @@
 import React from "react";
 import { ActionButton } from "../globals/buttons";
 import useOpen from "@/hooks/useOpen";
-import ImageGallery from "../common/imageDisplayer/imageGallery";
+import ImageGallery from "../common/imageGallery/imageGallery";
 import FullscreenLayer from "../common/fullscreenLayer/fullscreenLayer";
 import { Project } from "@/generated/prisma";
 
