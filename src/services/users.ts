@@ -27,7 +27,7 @@ class UsersService {
     }
   }
 
-  static async createUser(body: CreateUserI): Promise<User | ErrorI> {
+  static async createUser(body: CreateUserI): Promise<User> {
     try {
       const response = await fetch("/api/users", {
         method: "POST",
@@ -45,8 +45,8 @@ class UsersService {
       const data = await response.json();
 
       return data as User;
-    } catch (e: unknown) {
-      return e as ErrorI;
+    } catch (error) {
+      throw error as ErrorI;
     }
   }
 

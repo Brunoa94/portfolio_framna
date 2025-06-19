@@ -2,7 +2,7 @@ import InputText from "@/components/inputs/inputText";
 import { LoginUserI } from "@/types/user";
 import { signIn } from "next-auth/react";
 import React, { FormEvent, useCallback } from "react";
-import * as S from "../forms.styles";
+import * as S from "../../forms.styles";
 import { SubmitButton } from "@/components/globals/buttons";
 import { Title } from "@/components/globals/fonts";
 import InputPassword from "@/components/inputs/inputPassword";

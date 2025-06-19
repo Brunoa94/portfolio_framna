@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useCallback } from "react";
 import { ActionButton } from "../globals/buttons";
 import ProjectsService from "@/services/projects";
 import { ErrorI } from "@/types/api";
@@ -14,8 +14,7 @@ interface Props {
 
 const DeleteProjectButton = ({ project }: Props) => {
   const updateAlert = useAlertStore((state: AlertStore) => state.updateAlert);
-
-  const handleDelete = async () => {
+  const handleDelete = useCallback(async () => {
     try {
       await ProjectsService.deleteProject(project.id);
       updateAlert({ message: "Project Deleted", status: 200 });
@@ -23,7 +22,7 @@ const DeleteProjectButton = ({ project }: Props) => {
       const e = error as ErrorI;
       updateAlert({ message: e.message, status: e.status });
     }
-  };
+  }, [project.id, updateAlert]);
 
   return (
     <ActionButton color="red" onClick={handleDelete}>

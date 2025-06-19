@@ -3,7 +3,7 @@ import InputText from "@/components/inputs/inputText";
 import UsersService from "@/services/users";
 import { CreateUserI } from "@/types/user";
 import React, { FormEvent, useCallback } from "react";
-import { Form } from "../forms.styles";
+import { Form } from "../../forms.styles";
 import { ErrorI } from "@/types/api";
 import InputPassword from "@/components/inputs/inputPassword";
 import { useAlertStore } from "@/hooks/useAlertStore";

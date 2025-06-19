@@ -4,7 +4,7 @@ import FullscreenLayer from "@/components/common/fullscreenLayer/fullscreenLayer
 import { ActionButton } from "@/components/globals/buttons";
 import useOpen from "@/hooks/useOpen";
 import React from "react";
-import CreateUserForm from "../forms/user/createUserForm";
+import CreateUserForm from "../forms/user/createUserForm/createUserForm";
 
 const CreateUserButton = () => {
   const { open, close, isOpen, closeOnFullscreen } = useOpen();

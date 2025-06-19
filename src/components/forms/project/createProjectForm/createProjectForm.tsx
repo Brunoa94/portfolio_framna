@@ -1,23 +1,23 @@
+"use client";
+
 import { SubmitButton } from "@/components/globals/buttons";
 import InputImage from "@/components/inputs/inputImage/inputImage";
 import InputText from "@/components/inputs/inputText";
 import ProjectsService from "@/services/projects";
-import { UpdateProjectI } from "@/types/project";
+import { CreateProjectI } from "@/types/project";
 import React, { FormEvent, useCallback, useRef } from "react";
-import { Form } from "../forms.styles";
-import { Project } from "@/generated/prisma";
-import { ErrorI } from "@/types/api";
-import { useAlertStore } from "@/hooks/useAlertStore";
+import { Title } from "@/components/globals/fonts";
+import { Form } from "../../forms.styles";
 import { AlertStore } from "@/store/alertStore";
+import { useAlertStore } from "@/hooks/useAlertStore";
+import { ErrorI } from "@/types/api";
 import InputTextArea from "@/components/inputs/inputTextArea";
-
-interface UpdateProjectFormI {
-  project: Project;
+interface Props {
   handleClose: () => void;
 }
 
-const UpdateProjectForm = ({ project, handleClose }: UpdateProjectFormI) => {
-  const imagesUrlRef = useRef<string[]>(project.images);
+const CreateProjectForm = ({ handleClose }: Props) => {
+  const imagesUrlRef = useRef<string[]>([]);
   const updateAlert = useAlertStore((state: AlertStore) => state.updateAlert);
 
   const handleSubmit = useCallback(
@@ -29,17 +29,16 @@ const UpdateProjectForm = ({ project, handleClose }: UpdateProjectFormI) => {
       const description = String(form.get("description")) || "";
       const images = imagesUrlRef.current || [];
 
-      const updateProject: UpdateProjectI = {
+      const createProject: CreateProjectI = {
         title,
         description,
         images,
+        userId: 2,
       };
 
       try {
-        await ProjectsService.updateProject(project.id, updateProject);
-
-        updateAlert({ message: "Project Updated", status: 200 });
-        handleClose();
+        await ProjectsService.createProject(createProject);
+        updateAlert({ message: "Project Created", status: 200 });
         handleClose();
       } catch (error) {
         const e = error as ErrorI;
@@ -47,7 +46,7 @@ const UpdateProjectForm = ({ project, handleClose }: UpdateProjectFormI) => {
         handleClose();
       }
     },
-    [handleClose, project, updateAlert]
+    [handleClose, updateAlert]
   );
 
   const uploadImages = useCallback((newImage: string) => {
@@ -56,16 +55,13 @@ const UpdateProjectForm = ({ project, handleClose }: UpdateProjectFormI) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <InputText name="Title" id="title" value={project.title} />
-      <InputTextArea
-        name="Description"
-        id="description"
-        value={project.description}
-      />
-      <InputImage images={project.images} updateForm={uploadImages} />
+      <Title>Create Project</Title>
+      <InputText id="title" name="Title" />
+      <InputTextArea id="description" name="Description" />
+      <InputImage updateForm={uploadImages} />
       <SubmitButton type="submit">Submit</SubmitButton>
     </Form>
   );
 };
 
-export default UpdateProjectForm;
+export default CreateProjectForm;
