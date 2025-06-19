@@ -6,12 +6,16 @@ import React, { FormEvent, useCallback } from "react";
 import { Form } from "../forms.styles";
 import { ErrorI } from "@/types/api";
 import InputPassword from "@/components/inputs/inputPassword";
+import { useAlertStore } from "@/hooks/useAlertStore";
+import { AlertStore } from "@/store/alertStore";
 
 interface Props {
   handleClose: () => void;
 }
 
 const CreateUserForm = ({ handleClose }: Props) => {
+  const updateAlert = useAlertStore((state: AlertStore) => state.updateAlert);
+
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -29,11 +33,13 @@ const CreateUserForm = ({ handleClose }: Props) => {
         handleClose();
 
         return response;
-      } catch (e) {
-        throw e as ErrorI;
+      } catch (error) {
+        const e = error as ErrorI;
+        updateAlert({ message: e.message, status: e.status });
+        handleClose();
       }
     },
-    [handleClose]
+    [handleClose, updateAlert]
   );
 
   return (

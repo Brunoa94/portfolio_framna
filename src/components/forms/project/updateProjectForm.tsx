@@ -7,6 +7,8 @@ import React, { FormEvent, useCallback, useRef } from "react";
 import { Form } from "../forms.styles";
 import { Project } from "@/generated/prisma";
 import { ErrorI } from "@/types/api";
+import { useAlertStore } from "@/hooks/useAlertStore";
+import { AlertStore } from "@/store/alertStore";
 
 interface UpdateProjectFormI {
   project: Project;
@@ -15,6 +17,7 @@ interface UpdateProjectFormI {
 
 const UpdateProjectForm = ({ project, handleClose }: UpdateProjectFormI) => {
   const imagesUrlRef = useRef<string[]>(project.images);
+  const updateAlert = useAlertStore((state: AlertStore) => state.updateAlert);
 
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
@@ -43,11 +46,13 @@ const UpdateProjectForm = ({ project, handleClose }: UpdateProjectFormI) => {
         handleClose();
 
         return response;
-      } catch (e) {
-        throw e as ErrorI;
+      } catch (error) {
+        const e = error as ErrorI;
+        updateAlert({ message: e.message, status: e.status });
+        handleClose();
       }
     },
-    [handleClose, project]
+    [handleClose, project, updateAlert]
   );
 
   const uploadImages = useCallback((newImage: string) => {

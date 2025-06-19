@@ -8,7 +8,7 @@ export const Title = styled.h1<{ hasmargin?: string }>`
   margin: ${(props) => props.hasmargin};
 `;
 
-export const Section = styled.section`
+export const Section = styled.span`
   font-family: "Roboto Mono", sans-serif;
   font-size: 16px;
   gap: 16px;
@@ -23,9 +23,10 @@ export const SectionTitle = styled.h2`
   font-weight: bold;
 `;
 
-export const ItemTitle = styled.h3`
+export const ItemTitle = styled.h3<{ color?: string }>`
   font-family: "Roboto Mono", sans-serif;
   font-weight: bold;
+  color: ${(props) => props.color && props.color};
 `;
 
 export const Paragraph = styled.p`

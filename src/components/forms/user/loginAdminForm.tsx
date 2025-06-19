@@ -6,12 +6,16 @@ import * as S from "../forms.styles";
 import { SubmitButton } from "@/components/globals/buttons";
 import { Title } from "@/components/globals/fonts";
 import InputPassword from "@/components/inputs/inputPassword";
+import { useAlertStore } from "@/hooks/useAlertStore";
+import { AlertStore } from "@/store/alertStore";
 
 interface LoginAdminI {
   handleClose: () => void;
 }
 
 const LoginAdminForm = ({ handleClose }: LoginAdminI) => {
+  const updateAlert = useAlertStore((state: AlertStore) => state.updateAlert);
+
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -31,12 +35,13 @@ const LoginAdminForm = ({ handleClose }: LoginAdminI) => {
           redirect: false,
         });
       } catch {
-        console.log("ERROR");
+        updateAlert({ message: "Authentication failed", status: 401 });
+        handleClose();
       }
 
       handleClose();
     },
-    [handleClose]
+    [handleClose, updateAlert]
   );
 
   return (

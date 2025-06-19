@@ -50,7 +50,7 @@ class UsersService {
     }
   }
 
-  static async getUsers(): Promise<User[] | ErrorI> {
+  static async getUsers(): Promise<User[]> {
     try {
       const response = await fetch(`${process.env.NEXT_HOSTNAME}/api/users`, {
         method: "GET",

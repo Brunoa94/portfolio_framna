@@ -1,5 +1,5 @@
 export type ErrorI = {
-  error: string;
+  message: string;
   status: number;
 };
 

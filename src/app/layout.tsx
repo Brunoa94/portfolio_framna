@@ -4,6 +4,7 @@ import "./globals.css";
 import GlobalProviders from "@/providers/globalProviders";
 import * as S from "./layout.styles";
 import Header from "@/components/layout/header/header";
+import AlertModal from "@/components/common/alert/alertModal";
 
 const robotoMono = Roboto_Mono({
   variable: "--font-roboto-mono",
@@ -32,6 +33,7 @@ export default function RootLayout({
           <S.Container>
             <Header />
             <S.MainContainer>{children}</S.MainContainer>
+            <AlertModal />
           </S.Container>
         </GlobalProviders>
       </body>

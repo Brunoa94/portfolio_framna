@@ -30,8 +30,8 @@ export async function PATCH(
 
     return NextResponse.json(updateProject, { status: 200 });
   } catch (e) {
-    const { error, status } = handlePrismaError(e, "Update Project");
-    return NextResponse.json({ error }, { status });
+    const { message, status } = handlePrismaError(e, "Update Project");
+    return NextResponse.json({ message, status }, { status });
   }
 }
 
@@ -49,7 +49,7 @@ export async function DELETE(context: { params: { id: number } }) {
       { status: 200 }
     );
   } catch (e) {
-    const { error, status } = handlePrismaError(e, "Delete Project");
-    return NextResponse.json({ error }, { status });
+    const { message, status } = handlePrismaError(e, "Delete Project");
+    return NextResponse.json({ message, status }, { status });
   }
 }

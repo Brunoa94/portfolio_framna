@@ -11,8 +11,8 @@ export async function GET() {
 
     return NextResponse.json(users, { status: 200 });
   } catch (e) {
-    const { error, status } = handlePrismaError(e, "Get Users");
-    return NextResponse.json({ error }, { status });
+    const { message, status } = handlePrismaError(e, "Get Users");
+    return NextResponse.json({ message, status }, { status });
   }
 }
 
@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(newUser, { status: 200 });
   } catch (e) {
-    const { error, status } = handlePrismaError(e, "Create User");
-    return NextResponse.json({ error }, { status });
+    const { message, status } = handlePrismaError(e, "Create User");
+    return NextResponse.json({ message, status }, { status });
   }
 }

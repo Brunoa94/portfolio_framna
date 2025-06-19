@@ -13,8 +13,9 @@ export async function GET() {
     const projects: Project[] = await prisma.project.findMany();
 
     return new Response(JSON.stringify({ projects }), { status: 200 });
-  } catch {
-    throw new Error("Internal Server Error");
+  } catch (e) {
+    const { message, status } = handlePrismaError(e, "List Projects");
+    return NextResponse.json({ message, status }, { status });
   }
 }
 
@@ -39,7 +40,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(newProject, { status: 200 });
   } catch (e) {
-    const { error, status } = handlePrismaError(e, "Create Project");
-    return NextResponse.json({ error }, { status });
+    const { message, status } = handlePrismaError(e, "Create Project");
+    return NextResponse.json({ message, status }, { status });
   }
 }

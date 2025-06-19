@@ -8,13 +8,16 @@ import { CreateProjectI } from "@/types/project";
 import React, { FormEvent, useCallback, useRef } from "react";
 import { Title } from "@/components/globals/fonts";
 import { Form } from "../forms.styles";
-
+import { AlertStore } from "@/store/alertStore";
+import { useAlertStore } from "@/hooks/useAlertStore";
+import { ErrorI } from "@/types/api";
 interface Props {
   handleClose: () => void;
 }
 
 const CreateProjectForm = ({ handleClose }: Props) => {
   const imagesUrlRef = useRef<string[]>([]);
+  const updateAlert = useAlertStore((state: AlertStore) => state.updateAlert);
 
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
@@ -36,14 +39,16 @@ const CreateProjectForm = ({ handleClose }: Props) => {
       };
 
       try {
-        const response = await ProjectsService.createProject(createProject);
+        await ProjectsService.createProject(createProject);
+        updateAlert({ message: "Project Created", status: 200 });
         handleClose();
-        return response;
-      } catch {
-        throw new Error("Something went wrong");
+      } catch (error) {
+        const e = error as ErrorI;
+        updateAlert({ message: e.message, status: e.status });
+        handleClose();
       }
     },
-    [handleClose]
+    [handleClose, updateAlert]
   );
 
   const uploadImages = useCallback((newImage: string) => {

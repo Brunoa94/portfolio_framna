@@ -7,10 +7,6 @@ import UserItem from "./userItem/userItem";
 const UsersList = () => {
   const users = use(UsersService.getUsers());
 
-  if ("error" in users) {
-    return <div>Error: {users.error}</div>;
-  }
-
   return (
     <S.UsersList>
       {users?.map((user: User) => (

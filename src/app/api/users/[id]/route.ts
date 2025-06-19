@@ -17,8 +17,7 @@ export async function DELETE({ params }: { params: { id: number } }) {
       }
     );
   } catch (e) {
-    console.log("Error: " + e);
-    const { error, status } = handlePrismaError(e, "Delete User");
-    return NextResponse.json({ error }, { status });
+    const { message, status } = handlePrismaError(e, "Delete User");
+    return NextResponse.json({ message, status }, { status });
   }
 }
