@@ -1,6 +1,5 @@
 import { SubmitButton } from "@/components/globals/buttons";
 import InputText from "@/components/inputs/inputText";
-import UsersService from "@/services/users";
 import { CreateUserI } from "@/types/user";
 import React, { FormEvent, useCallback } from "react";
 import { Form } from "../../forms.styles";
@@ -8,6 +7,7 @@ import { ErrorI } from "@/types/api";
 import InputPassword from "@/components/inputs/inputPassword";
 import { useAlertStore } from "@/hooks/useAlertStore";
 import { AlertStore } from "@/store/alertStore";
+import { UserStore, useUserStore } from "@/store/userStore";
 
 interface Props {
   handleClose: () => void;
@@ -15,6 +15,7 @@ interface Props {
 
 const CreateUserForm = ({ handleClose }: Props) => {
   const updateAlert = useAlertStore((state: AlertStore) => state.updateAlert);
+  const createUser = useUserStore((state: UserStore) => state.createUser);
 
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
@@ -28,17 +29,16 @@ const CreateUserForm = ({ handleClose }: Props) => {
       };
 
       try {
-        await UsersService.createUser(body);
-
+        await createUser(body);
         updateAlert({ message: "User created", status: 200 });
-        handleClose();
       } catch (error) {
         const e = error as ErrorI;
         updateAlert({ message: e.message, status: e.status });
-        handleClose();
       }
+
+      handleClose();
     },
-    [handleClose, updateAlert]
+    [handleClose, updateAlert, createUser]
   );
 
   return (

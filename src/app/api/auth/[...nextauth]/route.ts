@@ -5,6 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import type { NextAuthOptions, User } from "next-auth";
 import { PrismaClient } from "@/generated/prisma";
 import { comparePasswords } from "@/lib/passwords";
+import { ErrorI } from "@/types/api";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -23,24 +24,28 @@ export const authOptions: NextAuthOptions = {
           });
 
           if (!user) {
-            throw new Error("Authentication failed");
+            const error: ErrorI = {
+              message: "Authentication failed",
+              status: 401,
+            };
+            throw error;
           }
 
-          const isAuthorized = await comparePasswords(
+          await comparePasswords(
             credentials?.password || "",
             user?.password || ""
           );
-
-          if (!isAuthorized) {
-            throw new Error("Authentication failed");
-          }
 
           return {
             id: user?.id || 0,
             username: user?.username || "",
           };
         } catch {
-          throw new Error("Authentication failed");
+          const error: ErrorI = {
+            message: "Authentication failed",
+            status: 401,
+          };
+          throw error;
         }
       },
     }),

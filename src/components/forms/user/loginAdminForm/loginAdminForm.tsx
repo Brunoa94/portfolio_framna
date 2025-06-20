@@ -29,12 +29,18 @@ const LoginAdminForm = ({ handleClose }: LoginAdminI) => {
       };
 
       try {
-        await signIn("credentials", {
+        const response = await signIn("credentials", {
           username: body.username,
           password: body.password,
           redirect: false,
         });
-        updateAlert({ message: "Admin logged in", status: 200 });
+
+        if (!response?.ok) {
+          updateAlert({ message: "Authentication failed", status: 401 });
+        } else {
+          updateAlert({ message: "Admin logged in", status: 200 });
+        }
+
         handleClose();
       } catch {
         updateAlert({ message: "Authentication failed", status: 401 });

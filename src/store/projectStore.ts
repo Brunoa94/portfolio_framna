@@ -6,8 +6,6 @@ import { ErrorI } from "@/types/api";
 
 export type ProjectStore = {
   projects: Project[];
-  loading: boolean;
-
   createProject: (data: CreateProjectI) => Promise<void>;
   updateProject: (projectId: number, data: UpdateProjectI) => Promise<void>;
   deleteProject: (projectId: number) => Promise<void>;
@@ -16,12 +14,11 @@ export type ProjectStore = {
 
 export const useProjectStore = create<ProjectStore>((set) => ({
   projects: [],
-  loading: false,
 
-  setProjects: (data) => set({ projects: data }),
-  createProject: async (data) => {
+  setProjects: (data: Project[]) => set({ projects: data }),
+  createProject: async (data: CreateProjectI) => {
     try {
-      const newProject = await ProjectsService.createProject(data);
+      const newProject: Project = await ProjectsService.createProject(data);
       set((state) => ({ projects: [...state.projects, newProject] }));
     } catch (error) {
       throw error as ErrorI;
@@ -29,7 +26,7 @@ export const useProjectStore = create<ProjectStore>((set) => ({
   },
   updateProject: async (projectId: number, data: UpdateProjectI) => {
     try {
-      const updatedProject = await ProjectsService.updateProject(
+      const updatedProject: Project = await ProjectsService.updateProject(
         projectId,
         data
       );
