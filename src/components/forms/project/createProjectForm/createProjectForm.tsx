@@ -33,7 +33,6 @@ const CreateProjectForm = ({ handleClose }: Props) => {
         title,
         description,
         images,
-        userId: 2,
       };
 
       try {

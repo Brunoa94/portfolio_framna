@@ -16,12 +16,11 @@ class ProjectsService {
         const error = await response.json();
         throw error as ErrorI;
       }
-
       const data = await response.json();
 
       return data;
-    } catch (e) {
-      return e as ErrorI;
+    } catch (error) {
+      throw error as ErrorI;
     }
   }
 

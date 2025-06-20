@@ -30,11 +30,6 @@ const ProjectBox = ({ fromAdmin, project }: ProjectBoxI) => {
       <S.Col>
         <ItemTitle>{project?.title}</ItemTitle>
         <Paragraph>{project?.description}</Paragraph>
-        <S.Technologies>
-          <S.Technology>React</S.Technology>
-          <S.Technology>Vue</S.Technology>
-          <S.Technology>Astro</S.Technology>
-        </S.Technologies>
       </S.Col>
       <ImagesButton images={project.images} project={project} />
     </>

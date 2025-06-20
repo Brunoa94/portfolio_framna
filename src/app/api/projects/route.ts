@@ -22,13 +22,12 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { title, description, technologies, userId, images } = body;
+    const { title, description, userId, images } = body;
 
     const newProject: Project = await prisma.project.create<CreateProjectI>({
       data: {
         title,
         description,
-        technologies,
         images,
         user: {
           connect: {

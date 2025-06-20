@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from "react";
+import React, { PropsWithChildren } from "react";
 import * as S from "./fullscreenLayer.styles";
 
 interface FullscreenLayerI extends PropsWithChildren {

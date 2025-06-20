@@ -14,6 +14,7 @@ interface Props {
 
 const DeleteProjectButton = ({ project }: Props) => {
   const updateAlert = useAlertStore((state: AlertStore) => state.updateAlert);
+
   const handleDelete = useCallback(async () => {
     try {
       await ProjectsService.deleteProject(project.id);
