@@ -13,17 +13,10 @@ export async function PATCH(
     const { id } = await params;
     const body: UpdateProjectI = await request.json();
 
-    const { userId, ...data } = body;
-
     const updateProject = await prisma.project.update({
       where: { id: Number(id) },
       data: {
-        ...data,
-        user: {
-          connect: {
-            id: userId,
-          },
-        },
+        ...body,
       },
     });
 
@@ -36,9 +29,9 @@ export async function PATCH(
 
 export async function DELETE(
   _request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const id = params.id;
+  const id = (await params).id;
 
   try {
     await prisma.project.delete({
