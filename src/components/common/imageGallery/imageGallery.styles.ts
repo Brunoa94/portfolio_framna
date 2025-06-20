@@ -5,6 +5,10 @@ export const ImageWrapper = styled.div`
   width: 100%;
   max-width: 500px;
   aspect-ratio: 4 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 `;
 
 export const ButtonsRow = styled.div`
@@ -28,4 +32,10 @@ export const ImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+`;
+
+export const Row = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
 `;

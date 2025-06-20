@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AlertContainer = styled.div<{ isactive?: boolean }>`
+export const AlertContainer = styled.div<{ $isActive?: boolean }>`
   display: flex;
   align-items: center;
   padding: 16px;
@@ -12,7 +12,7 @@ export const AlertContainer = styled.div<{ isactive?: boolean }>`
   gap: 12px;
   position: fixed;
   bottom: 60px;
-  right: ${(props) => (props.isactive ? "80px" : "-240px")};
+  right: ${(props) => (props.$isActive ? "80px" : "-240px")};
   transition: all 1s ease-in-out;
   border-radius: 16px;
   border: 2px solid black;

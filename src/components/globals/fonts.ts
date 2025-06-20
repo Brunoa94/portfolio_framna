@@ -2,10 +2,10 @@
 
 import styled from "styled-components";
 
-export const Title = styled.h1<{ hasmargin?: string }>`
+export const Title = styled.h1<{ $hasmargin?: string }>`
   font-family: "Roboto Mono", sans-serif;
   font-weight: bold;
-  margin: ${(props) => props.hasmargin};
+  margin: ${(props) => props.$hasmargin};
 `;
 
 export const Section = styled.span`
@@ -35,4 +35,9 @@ export const Paragraph = styled.p`
 
 export const SmallText = styled.span`
   font-size: 14px;
+`;
+
+export const MediumText = styled.span`
+  font-size: 18px;
+  color: white;
 `;

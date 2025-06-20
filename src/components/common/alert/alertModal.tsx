@@ -21,7 +21,7 @@ const AlertModal = () => {
   }, [storeAlert]);
 
   return (
-    <S.AlertContainer isactive={isActive}>
+    <S.AlertContainer $isActive={isActive}>
       <S.Row>
         {storeAlert.status === 200 ? (
           <Check size={32} color="#03c447" strokeWidth={2.25} />

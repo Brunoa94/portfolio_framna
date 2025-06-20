@@ -1,18 +1,12 @@
 "use client";
-import { ProjectI } from "@/types/project";
 import { signIn, useSession } from "next-auth/react";
 import { useState } from "react";
-import styled from "styled-components";
-
-const Container = styled.div`
-  width: 300px;
-  height: 300px;
-  background-color: red;
-`;
+import { Project } from "@/generated/prisma";
+import * as S from "./page.styles";
 
 export default function Home() {
   const { data: session } = useSession();
-  const [projects, setProjects] = useState<ProjectI[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
 
   // useEffect(() => {
   //   const fetchProjects = async () => {
@@ -36,5 +30,5 @@ export default function Home() {
     });
   }
 
-  return <></>;
+  return <S.Container></S.Container>;
 }

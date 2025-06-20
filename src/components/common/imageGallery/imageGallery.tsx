@@ -5,8 +5,9 @@ import { ArrowLeft, ArrowRight, Trash2 } from "lucide-react";
 import { ActionButton } from "@/components/globals/buttons";
 import { Project } from "@/generated/prisma";
 import ImagesService from "@/services/images";
-import ProjectsService from "@/services/projects";
 import { ErrorI } from "@/types/api";
+import { ProjectStore, useProjectStore } from "@/store/projectStore";
+import { MediumText } from "@/components/globals/fonts";
 
 interface Props {
   images: string[];
@@ -16,6 +17,9 @@ interface Props {
 
 const ImageGallery = ({ images, handleClose, project }: Props) => {
   const [index, setIndex] = useState<number>(0);
+  const updateProject = useProjectStore(
+    (state: ProjectStore) => state.updateProject
+  );
   const nextEnabled = index + 1 < images.length;
   const prevEnabled = index - 1 >= 0;
 
@@ -39,23 +43,32 @@ const ImageGallery = ({ images, handleClose, project }: Props) => {
         images: [...project.images.filter((image: string) => image !== imgSrc)],
       };
 
-      await ProjectsService.updateProject(project.id, updatedBody);
+      updateProject(project.id, updatedBody);
 
       await ImagesService.deleteImage({ imgSrc });
 
       if (index - 1 >= 0) {
         setIndex((prevIndex) => prevIndex - 1);
+      } else {
+        handleClose();
       }
     } catch (e) {
       throw e as ErrorI;
     }
-  }, [project, images, index]);
+  }, [project, images, index, updateProject, handleClose]);
+
+  const handleUpload = useCallback(() => {}, []);
 
   return (
     <S.ImageContainer>
       <ActionButton color="black" onClick={handleClose}>
         Close
       </ActionButton>
+      <S.Row>
+        <MediumText>{index + 1}</MediumText>
+        <MediumText>/</MediumText>
+        <MediumText>{images.length}</MediumText>
+      </S.Row>
       <S.ButtonsRow>
         <S.GalleryButton
           disabled={!prevEnabled}
