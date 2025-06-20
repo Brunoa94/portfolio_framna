@@ -30,14 +30,14 @@ const InputImage = ({ images, updateForm }: InputImageI) => {
   return (
     <S.Col>
       <S.Row>
-        {imagesUploaded?.map((imageString: string) => (
+        {imagesUploaded?.map((imageString: string, index: number) => (
           <Image
             key={`id-${imageString}`}
             src={imageString}
             width={80}
             height={80}
             style={{ borderRadius: "8px" }}
-            alt="Image Uploaded"
+            alt={`Image Uploaded ${index}`}
           />
         ))}
       </S.Row>
@@ -49,6 +49,7 @@ const InputImage = ({ images, updateForm }: InputImageI) => {
         accept="image/*"
         onChange={(e) => handleUpload(e.target.files?.[0] || null)}
         id="image-loader"
+        data-testid="image-loader"
       />
     </S.Col>
   );

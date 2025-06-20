@@ -14,7 +14,7 @@ class ProjectsService {
 
       if (!response.ok) {
         const error = await response.json();
-        return error;
+        throw error as ErrorI;
       }
 
       const data = await response.json();
@@ -36,7 +36,7 @@ class ProjectsService {
 
       if (!response.ok) {
         const error = await response.json();
-        return error;
+        throw error as ErrorI;
       }
 
       const data: ProjectsI = await response.json();
@@ -82,7 +82,7 @@ class ProjectsService {
 
       if (!response.ok) {
         const error = await response.json();
-        return error;
+        throw error as ErrorI;
       }
 
       const data = await response.json();

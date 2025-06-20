@@ -2,7 +2,7 @@
 
 import { User } from "@/generated/prisma";
 import UsersService from "@/services/users";
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
 import * as S from "./userItem.styles";
 import { Paragraph } from "@/components/globals/fonts";
 import { Trash } from "lucide-react";
@@ -29,4 +29,4 @@ const UserItem = ({ user }: Props) => {
   );
 };
 
-export default UserItem;
+export default memo(UserItem);

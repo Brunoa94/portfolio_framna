@@ -16,7 +16,7 @@ class UsersService {
 
       if (!response.ok) {
         const error = await response.json();
-        return error;
+        throw error as ErrorI;
       }
 
       const data = await response.json();
@@ -39,7 +39,7 @@ class UsersService {
 
       if (!response.ok) {
         const error = await response.json();
-        return error;
+        throw error as ErrorI;
       }
 
       const data = await response.json();
@@ -61,7 +61,7 @@ class UsersService {
 
       if (!response.ok) {
         const error = await response.json();
-        return error;
+        throw error as ErrorI;
       }
 
       const data = await response.json();

@@ -1,9 +1,10 @@
 "use client";
+
 import FullscreenLayer from "@/components/common/fullscreenLayer/fullscreenLayer";
-import CreateProjectForm from "@/components/forms/project/createProjectForm";
 import { ActionButton } from "@/components/globals/buttons";
 import useOpen from "@/hooks/useOpen";
 import React from "react";
+import CreateProjectForm from "../forms/project/createProjectForm/createProjectForm";
 
 const CreateProject = () => {
   const { open, close, isOpen, closeOnFullscreen } = useOpen();

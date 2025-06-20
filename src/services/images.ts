@@ -1,4 +1,4 @@
-import { DeleteImageI, ErrorI, ResponseImageI } from "@/types/api";
+import { DeleteImageI, ResponseImageI } from "@/types/api";
 
 class ImagesService {
   static async uploadImage(file: File) {
@@ -6,31 +6,41 @@ class ImagesService {
     formData.append("image", file);
 
     try {
-      const res = await fetch("/api/upload-image", {
+      const response = await fetch("/api/upload-image", {
         method: "POST",
         body: formData,
       });
 
-      const data: ResponseImageI = await res.json();
+      if (!response.ok) {
+        const error = await response.json();
+        throw error;
+      }
+
+      const data: ResponseImageI = await response.json();
 
       return data;
-    } catch (e) {
-      throw e as ErrorI;
+    } catch (error) {
+      throw error;
     }
   }
 
   static async deleteImage({ imgSrc }: DeleteImageI) {
     try {
-      const res = await fetch("/api/upload-image", {
+      const response = await fetch("/api/upload-image", {
         method: "DELETE",
         body: JSON.stringify({ imgSrc }),
       });
 
-      const data: ResponseImageI = await res.json();
+      if (!response.ok) {
+        const error = await response.json();
+        throw error;
+      }
+
+      const data: ResponseImageI = await response.json();
 
       return data;
-    } catch (e) {
-      throw e as ErrorI;
+    } catch (error) {
+      throw error;
     }
   }
 }

@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { SuccessI } from "@/types/api";
+
 import { useAlertStore } from "@/hooks/useAlertStore";
 import UsersService from "@/services/users";
 import { CreateUserI } from "@/types/user";
@@ -30,7 +30,7 @@ describe("Create User form", () => {
   });
 
   it("with valid values submit request and show alert with successfull message", async () => {
-    const successfullMessage: SuccessI = {
+    const successfullMessage = {
       message: "User created",
       status: 200,
     };
