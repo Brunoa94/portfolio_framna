@@ -1,7 +1,6 @@
 import { SubmitButton } from "@/components/globals/buttons";
 import InputImage from "@/components/inputs/inputImage/inputImage";
 import InputText from "@/components/inputs/inputText";
-import ProjectsService from "@/services/projects";
 import { UpdateProjectI } from "@/types/project";
 import React, { FormEvent, useCallback, useRef } from "react";
 import { Form } from "../../forms.styles";
@@ -10,6 +9,7 @@ import { ErrorI } from "@/types/api";
 import { useAlertStore } from "@/hooks/useAlertStore";
 import { AlertStore } from "@/store/alertStore";
 import InputTextArea from "@/components/inputs/inputTextArea";
+import { ProjectStore, useProjectStore } from "@/store/projectStore";
 
 interface UpdateProjectFormI {
   project: Project;
@@ -19,6 +19,9 @@ interface UpdateProjectFormI {
 const UpdateProjectForm = ({ project, handleClose }: UpdateProjectFormI) => {
   const imagesUrlRef = useRef<string[]>(project.images);
   const updateAlert = useAlertStore((state: AlertStore) => state.updateAlert);
+  const updateProject = useProjectStore(
+    (state: ProjectStore) => state.updateProject
+  );
 
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
@@ -29,17 +32,15 @@ const UpdateProjectForm = ({ project, handleClose }: UpdateProjectFormI) => {
       const description = String(form.get("description")) || "";
       const images = imagesUrlRef.current || [];
 
-      const updateProject: UpdateProjectI = {
+      const body: UpdateProjectI = {
         title,
         description,
         images,
       };
 
       try {
-        await ProjectsService.updateProject(project.id, updateProject);
-
+        await updateProject(project.id, body);
         updateAlert({ message: "Project Updated", status: 200 });
-        handleClose();
         handleClose();
       } catch (error) {
         const e = error as ErrorI;
@@ -47,7 +48,7 @@ const UpdateProjectForm = ({ project, handleClose }: UpdateProjectFormI) => {
         handleClose();
       }
     },
-    [handleClose, project, updateAlert]
+    [handleClose, project, updateAlert, updateProject]
   );
 
   const uploadImages = useCallback((newImage: string) => {

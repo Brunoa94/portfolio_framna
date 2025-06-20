@@ -16,7 +16,7 @@ interface ProjectBoxI {
 const ProjectBox = ({ fromAdmin, project }: ProjectBoxI) => {
   const ProjectDetails = (
     <>
-      {project?.images.length > 0 ? (
+      {project?.images?.length > 0 ? (
         <Image
           width={80}
           height={80}

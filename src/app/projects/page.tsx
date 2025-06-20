@@ -1,9 +1,12 @@
-import React from "react";
+import React, { use } from "react";
 import * as S from "./page.styles";
 import { Paragraph, Title } from "@/components/globals/fonts";
 import ProjectList from "@/components/projects/projectList/projectList";
+import ProjectsService from "@/services/projects";
 
 function Projects() {
+  const projects = use(ProjectsService.getProjects());
+
   return (
     <S.Container>
       <S.Section>
@@ -17,7 +20,7 @@ function Projects() {
         </Paragraph>
       </S.Section>
       <S.Section>
-        <ProjectList />
+        <ProjectList initialProjects={projects} />
       </S.Section>
     </S.Container>
   );

@@ -3,7 +3,6 @@
 import { SubmitButton } from "@/components/globals/buttons";
 import InputImage from "@/components/inputs/inputImage/inputImage";
 import InputText from "@/components/inputs/inputText";
-import ProjectsService from "@/services/projects";
 import { CreateProjectI } from "@/types/project";
 import React, { FormEvent, useCallback, useRef } from "react";
 import { Title } from "@/components/globals/fonts";
@@ -12,6 +11,7 @@ import { AlertStore } from "@/store/alertStore";
 import { useAlertStore } from "@/hooks/useAlertStore";
 import { ErrorI } from "@/types/api";
 import InputTextArea from "@/components/inputs/inputTextArea";
+import { ProjectStore, useProjectStore } from "@/store/projectStore";
 interface Props {
   handleClose: () => void;
 }
@@ -19,6 +19,9 @@ interface Props {
 const CreateProjectForm = ({ handleClose }: Props) => {
   const imagesUrlRef = useRef<string[]>([]);
   const updateAlert = useAlertStore((state: AlertStore) => state.updateAlert);
+  const createProject = useProjectStore(
+    (state: ProjectStore) => state.createProject
+  );
 
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
@@ -29,14 +32,14 @@ const CreateProjectForm = ({ handleClose }: Props) => {
       const description = String(form.get("description")) || "";
       const images = imagesUrlRef.current || [];
 
-      const createProject: CreateProjectI = {
+      const body: CreateProjectI = {
         title,
         description,
         images,
       };
 
       try {
-        await ProjectsService.createProject(createProject);
+        await createProject(body);
         updateAlert({ message: "Project Created", status: 200 });
         handleClose();
       } catch (error) {
@@ -45,7 +48,7 @@ const CreateProjectForm = ({ handleClose }: Props) => {
         handleClose();
       }
     },
-    [handleClose, updateAlert]
+    [handleClose, updateAlert, createProject]
   );
 
   const uploadImages = useCallback((newImage: string) => {

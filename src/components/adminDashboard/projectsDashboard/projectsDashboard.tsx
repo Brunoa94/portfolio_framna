@@ -1,10 +1,13 @@
-import React from "react";
+import React, { use } from "react";
 import * as S from "./projectsDashboard.styles";
 import { Paragraph, Title } from "@/components/globals/fonts";
 import CreateProjectButton from "@/components/projects/createProjectButton";
 import ProjectList from "@/components/projects/projectList/projectList";
+import ProjectsService from "@/services/projects";
 
 const ProjectsDashboard = () => {
+  const projects = use(ProjectsService.getProjects());
+
   return (
     <S.Section>
       <S.Article>
@@ -22,7 +25,7 @@ const ProjectsDashboard = () => {
           <Title>Projects</Title>
           <CreateProjectButton />
         </S.Row>
-        <ProjectList fromAdmin />
+        <ProjectList fromAdmin initialProjects={projects} />
       </S.Article>
     </S.Section>
   );
