@@ -1,15 +1,16 @@
 import { Title } from "@/components/globals/fonts";
 import React, { use } from "react";
-import { Article, Row, Section } from "../common.styles";
+import { Article, Row } from "../common.styles";
 import UsersList from "../../users/usersList/usersList";
 import CreateUserButton from "@/components/users/createUserButton";
 import UsersService from "@/services/users";
+import * as S from "./usersDashboard.styles";
 
 const UsersDashboard = () => {
   const initialUsers = use(UsersService.getUsers());
 
   return (
-    <Section>
+    <S.Container>
       <Article>
         <Row>
           <Title>Users</Title>
@@ -17,7 +18,7 @@ const UsersDashboard = () => {
         </Row>
         <UsersList initialUsers={initialUsers} />
       </Article>
-    </Section>
+    </S.Container>
   );
 };
 

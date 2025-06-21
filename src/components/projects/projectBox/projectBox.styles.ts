@@ -1,12 +1,25 @@
 "use client";
 
+import { device } from "@/theme/breakpoints";
 import styled from "styled-components";
 
 export const ProjectItem = styled.li`
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
   width: 100%;
+  flex-direction: column;
+  padding-bottom: 16px;
+  border-bottom: 2px solid black;
+  border-radius: 8px;
+
+  @media ${device.tablet} {
+    flex-direction: row;
+    gap: 16px;
+    padding-bottom: 0;
+    border: none;
+    border-radius: 0;
+  }
 `;
 
 export const Col = styled.div<{ gap?: string }>`

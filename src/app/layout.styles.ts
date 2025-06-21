@@ -1,4 +1,5 @@
 "use client";
+
 import { styled } from "styled-components";
 
 export const Container = styled.div`
@@ -8,9 +9,10 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-export const MainContainer = styled.main`
+export const MainContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 80px;
+  padding: 0 16px;
 `;

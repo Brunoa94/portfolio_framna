@@ -3,16 +3,16 @@
 import { device } from "@/theme/breakpoints";
 import styled from "styled-components";
 
-export const Container = styled.main`
+export const Container = styled.section`
   display: flex;
-  gap: 32px;
   width: 100%;
-  justify-content: center;
   flex-direction: column;
-  align-items: center;
+  gap: 12px;
+  padding: 32px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
 
   @media ${device.desktop} {
-    flex-direction: row;
-    align-items: flex-start;
+    max-width: 400px;
   }
 `;
