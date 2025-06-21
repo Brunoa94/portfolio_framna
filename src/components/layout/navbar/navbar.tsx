@@ -7,8 +7,13 @@ interface NavbarOption {
   id: string;
 }
 
-const Navbar = () => {
-  const options: NavbarOption[] = [
+interface Props {
+  isMobile?: boolean;
+  isLogged?: boolean;
+}
+
+const Navbar = ({ isMobile, isLogged }: Props) => {
+  let options: NavbarOption[] = [
     {
       name: "About Me",
       id: "/about-me",
@@ -18,15 +23,18 @@ const Navbar = () => {
       id: "/projects",
     },
   ];
+
+  if (isMobile && isLogged) {
+    options = [...options, { name: "Admin Dashboard", id: "/admin-dashboard" }];
+  }
+
   return (
     <S.Navbar>
-      <S.List>
-        {options.map((option: NavbarOption) => (
-          <S.Option key={`option-${option.id}`}>
-            <Link href={option.id}>{option.name}</Link>
-          </S.Option>
-        ))}
-      </S.List>
+      {options.map((option: NavbarOption) => (
+        <Link href={option.id} key={`option-${option.id}`}>
+          {option.name}
+        </Link>
+      ))}
     </S.Navbar>
   );
 };

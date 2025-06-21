@@ -7,12 +7,21 @@ export default function useBreakpoints() {
   useEffect(() => {
     const handleResize = () => {
       if (typeof window !== "undefined") {
-        if (window.innerWidth > breakpoints.desktop) setScreen("desktop");
-        if (window.innerWidth > breakpoints.tablet) setScreen("tablet");
+        if (window.innerWidth > breakpoints.desktop) {
+          setScreen("desktop");
+          return;
+        }
+
+        if (window.innerWidth > breakpoints.tablet) {
+          setScreen("tablet");
+          return;
+        }
+
         setScreen("mobile");
       }
     };
 
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);

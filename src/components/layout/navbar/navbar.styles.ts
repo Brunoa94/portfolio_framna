@@ -1,31 +1,32 @@
 "use client";
 
+import { device } from "@/theme/breakpoints";
 import styled from "styled-components";
 
 export const Navbar = styled.nav`
-  padding: 0 32px;
-  flex: 2;
   display: flex;
-  justify-content: center;
-`;
+  flex-direction: column;
+  gap: 16px;
 
-export const List = styled.ul`
-  gap: 32px;
-  text-style: none;
-  display: flex;
-  align-items: center;
-`;
+  a {
+    font-family: "Nunito", sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
 
-export const Option = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Nunito", sans-serif;
-  font-size: 1.5rem;
-  font-weight: bold;
-  cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
 
-  &:hover {
-    opacity: 0.8;
+    @media ${device.desktop} {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media ${device.desktop} {
+    padding: 0 32px;
+    flex: 2;
+    justify-content: center;
+    flex-direction: row;
   }
 `;

@@ -22,7 +22,7 @@ const AdminActions = () => {
             <S.LoginButton>Admin Dashboard</S.LoginButton>
           </Link>
           <S.LogoutButton onClick={handleSignOut}>
-            <LogOut size={36} color="#ff0000" absoluteStrokeWidth />{" "}
+            <LogOut size={36} color="#ff0000" absoluteStrokeWidth />
           </S.LogoutButton>
         </S.Row>
       )}
