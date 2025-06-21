@@ -8,9 +8,10 @@ import ImagesService from "@/services/images";
 interface InputImageI {
   images?: string[];
   updateForm: (value: string) => void;
+  inAdmin?: boolean;
 }
 
-const InputImage = ({ images, updateForm }: InputImageI) => {
+const InputImage = ({ images, updateForm, inAdmin }: InputImageI) => {
   const [imagesUploaded, setImagesUploaded] = useState<string[]>(images || []);
 
   const handleUpload = useCallback(
@@ -20,27 +21,30 @@ const InputImage = ({ images, updateForm }: InputImageI) => {
       }
       try {
         const response: ResponseImageI = await ImagesService.uploadImage(file);
-        setImagesUploaded((prevImages) => [...prevImages, response.image]);
+        if (!inAdmin)
+          setImagesUploaded((prevImages) => [...prevImages, response.image]);
         updateForm(response.image);
       } catch {}
     },
-    [updateForm]
+    [updateForm, inAdmin]
   );
 
   return (
     <S.Col>
-      <S.Row>
-        {imagesUploaded?.map((imageString: string, index: number) => (
-          <Image
-            key={`id-${imageString}`}
-            src={imageString}
-            width={80}
-            height={80}
-            style={{ borderRadius: "8px" }}
-            alt={`Image Uploaded ${index}`}
-          />
-        ))}
-      </S.Row>
+      {!inAdmin && (
+        <S.Row>
+          {imagesUploaded?.map((imageString: string, index: number) => (
+            <Image
+              key={`id-${imageString}`}
+              src={imageString}
+              width={80}
+              height={80}
+              style={{ borderRadius: "8px" }}
+              alt={`Image Uploaded ${index}`}
+            />
+          ))}
+        </S.Row>
+      )}
       <S.Label htmlFor="image-loader">
         <ImagePlus size={36} color="#590c97" />
       </S.Label>

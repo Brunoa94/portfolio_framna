@@ -37,7 +37,9 @@ export const SmallText = styled.span`
   font-size: 14px;
 `;
 
-export const MediumText = styled.span`
+export const MediumText = styled.span<{ $hasColor?: string }>`
   font-size: 18px;
-  color: white;
+  color: ${(props) => (props.$hasColor ? props.$hasColor : "white")};
+  white-space: nowrap;
+  text-align: center;
 `;

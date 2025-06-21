@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import * as S from "./projectBox.styles";
 import Image from "next/image";
-import { ItemTitle, Paragraph } from "@/components/globals/fonts";
+import { ItemTitle, MediumText, Paragraph } from "@/components/globals/fonts";
 import { ImageOff } from "lucide-react";
 import UpdateProjectButton from "../updateProjectButton";
 import DeleteProjectButton from "../deleteProjectButton";
@@ -31,7 +31,11 @@ const ProjectBox = ({ fromAdmin, project }: ProjectBoxI) => {
         <ItemTitle>{project?.title}</ItemTitle>
         <Paragraph>{project?.description}</Paragraph>
       </S.Col>
-      <ImagesButton images={project.images} project={project} />
+      {project.images.length > 0 ? (
+        <ImagesButton images={project.images} project={project} />
+      ) : (
+        <MediumText $hasColor="black">No Images</MediumText>
+      )}
     </>
   );
 

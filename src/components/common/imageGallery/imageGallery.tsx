@@ -57,8 +57,6 @@ const ImageGallery = ({ images, handleClose, project }: Props) => {
     }
   }, [project, images, index, updateProject, handleClose]);
 
-  const handleUpload = useCallback(() => {}, []);
-
   return (
     <S.ImageContainer>
       <ActionButton color="black" onClick={handleClose}>
