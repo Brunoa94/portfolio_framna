@@ -31,7 +31,11 @@ const Navbar = ({ isMobile, isLogged }: Props) => {
   return (
     <S.Navbar>
       {options.map((option: NavbarOption) => (
-        <Link href={option.id} key={`option-${option.id}`}>
+        <Link
+          href={option.id}
+          key={`option-${option.id}`}
+          data-testid="navbar-link"
+        >
           {option.name}
         </Link>
       ))}

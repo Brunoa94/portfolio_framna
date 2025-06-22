@@ -13,9 +13,11 @@ const MobileNavbar = () => {
   const [clicked, setClicked] = useState<boolean>(false);
   const { data: session } = useSession();
   const ref = useRef<HTMLDivElement>(null);
+
   const handleClickOutside = useCallback(() => {
     setClicked(false);
   }, []);
+
   useClickOutside({ handleClickOutside, ref });
 
   const handleOpen = useCallback(() => {

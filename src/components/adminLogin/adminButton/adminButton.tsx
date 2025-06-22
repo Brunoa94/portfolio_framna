@@ -7,7 +7,7 @@ import Link from "next/link";
 import { LogOut } from "lucide-react";
 import LoginAdmin from "../loginAdmin/loginAdmin";
 
-const AdminActions = () => {
+const AdminButton = () => {
   const { data: session } = useSession();
 
   const handleSignOut = useCallback(() => {
@@ -31,4 +31,4 @@ const AdminActions = () => {
   );
 };
 
-export default AdminActions;
+export default AdminButton;

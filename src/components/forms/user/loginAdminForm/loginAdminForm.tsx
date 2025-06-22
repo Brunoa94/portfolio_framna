@@ -53,8 +53,8 @@ const LoginAdminForm = ({ handleClose }: LoginAdminI) => {
   );
 
   return (
-    <S.Form onSubmit={handleSubmit}>
-      <Title hasmargin="0 0 12px 0">Login as Admin</Title>
+    <S.Form onSubmit={handleSubmit} data-testid="login-admin-form">
+      <Title $hasmargin="0 0 12px 0">Login as Admin</Title>
       <InputText id="username" name="Username" required />
       <InputPassword id="password" name="Password" required />
       <SubmitButton type="submit">Submit</SubmitButton>

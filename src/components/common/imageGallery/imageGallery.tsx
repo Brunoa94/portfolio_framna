@@ -71,6 +71,7 @@ const ImageGallery = ({ images, handleClose, project }: Props) => {
         <S.GalleryButton
           disabled={!prevEnabled}
           onClick={() => handleIndex(false)}
+          data-testid="prev-button"
         >
           <ArrowLeft size={40} color="#454545" strokeWidth={2.25} />
         </S.GalleryButton>
@@ -80,16 +81,18 @@ const ImageGallery = ({ images, handleClose, project }: Props) => {
             style={{ objectFit: "cover" }}
             src={images[index]}
             alt={`Image from gallery ${index}`}
+            data-testid="image-gallery"
           />
         </S.ImageWrapper>
         <S.GalleryButton
           disabled={!nextEnabled}
           onClick={() => handleIndex(true)}
+          data-testid="next-button"
         >
           <ArrowRight size={40} color="#454545" strokeWidth={2.25} />
         </S.GalleryButton>
       </S.ButtonsRow>
-      <S.GalleryButton onClick={handleDelete}>
+      <S.GalleryButton onClick={handleDelete} data-testid="delete-button">
         <Trash2 size={28} color="red" />
       </S.GalleryButton>
     </S.ImageContainer>
