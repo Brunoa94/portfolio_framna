@@ -4,8 +4,15 @@ import "./globals.css";
 import GlobalProviders from "@/providers/globalProviders";
 import * as S from "./layout.styles";
 import Header from "@/components/layout/header/header";
-import AlertToast from "@/components/common/alert/alertToast";
 import Footer from "@/components/layout/footer/footer";
+import dynamic from "next/dynamic";
+
+const AlertToast = dynamic(
+  () => import("@/components/common/alert/alertToast"),
+  {
+    ssr: false,
+  }
+);
 
 const robotoMono = Roboto_Mono({
   variable: "--font-roboto-mono",
@@ -30,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${nunito.variable} ${robotoMono.variable}`}>
         <GlobalProviders>
           <S.Container>
             <Header />

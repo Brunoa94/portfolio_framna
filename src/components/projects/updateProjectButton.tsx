@@ -5,7 +5,12 @@ import { ActionButton } from "@/components/globals/buttons";
 import useOpen from "@/hooks/useOpen";
 import React from "react";
 import { Project } from "@/generated/prisma";
-import UpdateProjectForm from "../forms/project/updateProjectForm/updateProjectForm";
+import dynamic from "next/dynamic";
+
+const UpdateProjectForm = dynamic(
+  () => import("../forms/project/updateProjectForm/updateProjectForm"),
+  { ssr: false }
+);
 
 interface UpdateProjectButtonI {
   project: Project;

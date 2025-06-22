@@ -4,7 +4,12 @@ import FullscreenLayer from "@/components/common/fullscreenLayer/fullscreenLayer
 import { ActionButton } from "@/components/globals/buttons";
 import useOpen from "@/hooks/useOpen";
 import React from "react";
-import CreateUserForm from "../forms/user/createUserForm/createUserForm";
+import dynamic from "next/dynamic";
+
+const CreateUserForm = dynamic(
+  () => import("../forms/user/createUserForm/createUserForm"),
+  { ssr: false }
+);
 
 const CreateUserButton = () => {
   const { open, close, isOpen, closeOnFullscreen } = useOpen();

@@ -3,9 +3,14 @@
 import React from "react";
 import { ActionButton } from "../globals/buttons";
 import useOpen from "@/hooks/useOpen";
-import ImageGallery from "../common/imageGallery/imageGallery";
 import FullscreenLayer from "../common/fullscreenLayer/fullscreenLayer";
 import { Project } from "@/generated/prisma";
+import dynamic from "next/dynamic";
+
+const ImageGallery = dynamic(
+  () => import("../common/imageGallery/imageGallery"),
+  { ssr: false }
+);
 
 interface Props {
   images: string[];
