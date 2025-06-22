@@ -1,4 +1,4 @@
-import { Car } from "lucide-react";
+import Image from "next/image";
 
 export interface SkillI {
   icon: React.ReactElement;
@@ -7,51 +7,135 @@ export interface SkillI {
 
 export const skills: SkillI[] = [
   {
-    icon: <Car size={50} color="#40116b" />,
+    icon: (
+      <Image
+        width={50}
+        height={50}
+        src={"/technologies/nextjs.svg"}
+        alt="NextJS icon"
+      />
+    ),
     name: "NextJS",
   },
   {
-    icon: <Car size={50} color="#40116b" />,
+    icon: (
+      <Image
+        width={50}
+        height={50}
+        src={"/technologies/html5.svg"}
+        alt="HTML5 icon"
+      />
+    ),
     name: "HTML5",
   },
   {
-    icon: <Car size={50} color="#40116b" />,
+    icon: (
+      <Image
+        width={50}
+        height={50}
+        src={"/technologies/css.svg"}
+        alt="CSS icon"
+      />
+    ),
     name: "CSS",
   },
   {
-    icon: <Car size={50} color="#40116b" />,
+    icon: (
+      <Image
+        width={50}
+        height={50}
+        src={"/technologies/styledcomponents.svg"}
+        alt="Styled Components icon"
+      />
+    ),
     name: "Styled Components",
   },
   {
-    icon: <Car size={50} color="#40116b" />,
+    icon: (
+      <Image
+        width={50}
+        height={50}
+        src={"/technologies/tailwindcss.svg"}
+        alt="TailwindCSS icon"
+      />
+    ),
     name: "TailwindCSS",
   },
   {
-    icon: <Car size={50} color="#40116b" />,
+    icon: (
+      <Image
+        width={50}
+        height={50}
+        src={"/technologies/typescript.svg"}
+        alt="Typescript icon"
+      />
+    ),
     name: "Typescript",
   },
   {
-    icon: <Car size={50} color="#40116b" />,
+    icon: (
+      <Image
+        width={50}
+        height={50}
+        src={"/technologies/graphql.svg"}
+        alt="Typescript icon"
+      />
+    ),
     name: "GraphQL",
   },
   {
-    icon: <Car size={50} color="#40116b" />,
+    icon: (
+      <Image
+        width={50}
+        height={50}
+        src={"/technologies/rubyonrails.svg"}
+        alt="Typescript icon"
+      />
+    ),
     name: "Ruby on Rails",
   },
   {
-    icon: <Car size={50} color="#40116b" />,
+    icon: (
+      <Image
+        width={50}
+        height={50}
+        src={"/technologies/python.svg"}
+        alt="Typescript icon"
+      />
+    ),
     name: "Python",
   },
   {
-    icon: <Car size={50} color="#40116b" />,
+    icon: (
+      <Image
+        width={50}
+        height={50}
+        src={"/technologies/jest.svg"}
+        alt="Typescript icon"
+      />
+    ),
     name: "Jest",
   },
   {
-    icon: <Car size={50} color="#40116b" />,
+    icon: (
+      <Image
+        width={50}
+        height={50}
+        src={"/technologies/vitest.svg"}
+        alt="Typescript icon"
+      />
+    ),
     name: "Vitest",
   },
   {
-    icon: <Car size={50} color="#40116b" />,
+    icon: (
+      <Image
+        width={50}
+        height={50}
+        src={"/technologies/git.svg"}
+        alt="Typescript icon"
+      />
+    ),
     name: "Git",
   },
 ];
