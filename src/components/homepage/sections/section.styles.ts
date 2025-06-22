@@ -17,7 +17,7 @@ export const Section = styled.div`
 
 export const SectionTitle = styled.span`
   font-size: 30px;
-  font-family: "Nunito", sans-serif;
+  var(--font-nunito), sans-serif
   color: #5d1d5e;
   font-weight: bold;
 

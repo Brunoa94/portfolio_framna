@@ -20,7 +20,7 @@ export const Input = styled.input`
 `;
 
 export const Label = styled.label`
-  font-family: "Roboto Mono", sans-serif;
+  var(--font-roboto), sans-serif
   font-size: 16px;
   font-weight: bold;
 `;

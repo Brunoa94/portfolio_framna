@@ -5,14 +5,7 @@ import GlobalProviders from "@/providers/globalProviders";
 import * as S from "./layout.styles";
 import Header from "@/components/layout/header/header";
 import Footer from "@/components/layout/footer/footer";
-import dynamic from "next/dynamic";
-
-const AlertToast = dynamic(
-  () => import("@/components/common/alert/alertToast"),
-  {
-    ssr: false,
-  }
-);
+import ClientAlertToast from "@/components/common/alert/clientAlertToast";
 
 const robotoMono = Roboto_Mono({
   variable: "--font-roboto-mono",
@@ -43,7 +36,7 @@ export default function RootLayout({
             <Header />
             <S.MainContainer>{children}</S.MainContainer>
             <Footer />
-            <AlertToast />
+            <ClientAlertToast />
           </S.Container>
         </GlobalProviders>
       </body>

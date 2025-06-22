@@ -11,7 +11,7 @@ export const Container = styled.main`
   flex-direction: column;
   align-items: center;
   padding: 32px;
-  font-family: "Roboto Mono", sans-serif;
+  var(--font-roboto), sans-serif
   gap: 32px;
 `;
 
@@ -21,6 +21,7 @@ export const Introduction = styled.section`
   flex-direction: column;
   gap: 24px;
   text-align: justify;
+  margin-top: 32px;
 
   @media ${device.desktop} {
     flex-direction: row;

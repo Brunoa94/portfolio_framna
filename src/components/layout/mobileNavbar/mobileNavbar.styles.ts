@@ -31,7 +31,7 @@ export const OptionsContainer = styled.div`
 export const LogoutButton = styled.button`
   border: none;
   background: none;
-  font-family: "Nunito", sans-serif;
+  var(--font-nunito), sans-serif
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;

@@ -11,7 +11,7 @@ export const LogoutButton = styled.button`
 export const LoginButton = styled.button`
     padding: 16px 24px;
     border-radius : 8px
-    font-family: "Roboto Mono", sans-serif;
+    var(--font-roboto), sans-serif
     font-size: 12px;
     font-weight: bold;
     text-transform: uppercase;
