@@ -7,7 +7,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 
 const CreateUserForm = dynamic(
-  () => import("../forms/user/createUserForm/createUserForm"),
+  () => import("../forms/admin/createAdminForm/createAdminForm"),
   { ssr: false }
 );
 

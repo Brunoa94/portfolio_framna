@@ -1,21 +1,21 @@
 import { SubmitButton } from "@/components/globals/buttons";
 import InputText from "@/components/inputs/inputText";
-import { CreateUserI } from "@/types/user";
 import React, { FormEvent, useCallback } from "react";
 import { Form } from "../../forms.styles";
 import { ErrorI } from "@/types/api";
 import InputPassword from "@/components/inputs/inputPassword";
 import { useAlertStore } from "@/hooks/useAlertStore";
 import { AlertStore } from "@/store/alertStore";
-import { UserStore, useUserStore } from "@/store/userStore";
+import { AdminStore, useAdminStore } from "@/store/adminStore";
+import { CreateAdminI } from "@/types/admin";
 
 interface Props {
   handleClose: () => void;
 }
 
-const CreateUserForm = ({ handleClose }: Props) => {
+const CreateAdminForm = ({ handleClose }: Props) => {
   const updateAlert = useAlertStore((state: AlertStore) => state.updateAlert);
-  const createUser = useUserStore((state: UserStore) => state.createUser);
+  const createUser = useAdminStore((state: AdminStore) => state.createAdmin);
 
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
@@ -23,7 +23,7 @@ const CreateUserForm = ({ handleClose }: Props) => {
 
       const form = new FormData(e.currentTarget);
 
-      const body: CreateUserI = {
+      const body: CreateAdminI = {
         username: String(form.get("username")),
         password: String(form.get("password")),
       };
@@ -49,4 +49,4 @@ const CreateUserForm = ({ handleClose }: Props) => {
   );
 };
 
-export default CreateUserForm;
+export default CreateAdminForm;

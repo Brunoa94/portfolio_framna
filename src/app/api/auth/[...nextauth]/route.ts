@@ -19,7 +19,7 @@ export const authOptions: NextAuthOptions = {
         const prisma = new PrismaClient();
 
         try {
-          const user = await prisma.user.findFirst({
+          const user = await prisma.admin.findFirst({
             where: { username: credentials?.username },
           });
 

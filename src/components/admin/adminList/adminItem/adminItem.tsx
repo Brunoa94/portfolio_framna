@@ -1,27 +1,27 @@
 "use client";
 
-import { User } from "@/generated/prisma";
 import { memo, useCallback } from "react";
-import * as S from "./userItem.styles";
+import * as S from "./adminItem.styles";
 import { Paragraph } from "@/components/globals/fonts";
 import { Trash } from "lucide-react";
 import { useAlertStore } from "@/hooks/useAlertStore";
 import { AlertStore } from "@/store/alertStore";
 import { ErrorI } from "@/types/api";
-import { UserStore, useUserStore } from "@/store/userStore";
+import { Admin } from "@/generated/prisma";
+import { AdminStore, useAdminStore } from "@/store/adminStore";
 
 interface Props {
-  user: User;
+  user: Admin;
 }
 
 const UserItem = ({ user }: Props) => {
   const updateAlert = useAlertStore((state: AlertStore) => state.updateAlert);
-  const deleteUser = useUserStore((state: UserStore) => state.deleteUser);
+  const deleteUser = useAdminStore((state: AdminStore) => state.deleteAdmin);
 
   const handleDelete = useCallback(async () => {
     try {
       await deleteUser(user.id);
-      updateAlert({ message: "User deleted", status: 200 });
+      updateAlert({ message: "Admin deleted", status: 200 });
     } catch (error) {
       const e = error as ErrorI;
       updateAlert({ message: e.message, status: e.status });

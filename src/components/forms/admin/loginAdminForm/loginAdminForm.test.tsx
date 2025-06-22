@@ -2,7 +2,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import LoginAdminForm from "./loginAdminForm";
 import { useAlertStore } from "@/hooks/useAlertStore";
 import { signIn } from "next-auth/react";
-import { LoginUserI } from "@/types/user";
+import { LoginUserI } from "@/types/admin";
 
 jest.mock("next-auth/react", () => ({
   signIn: jest.fn(),

@@ -1,5 +1,5 @@
 import InputText from "@/components/inputs/inputText";
-import { LoginUserI } from "@/types/user";
+import { LoginUserI } from "@/types/admin";
 import { signIn } from "next-auth/react";
 import React, { FormEvent, useCallback } from "react";
 import * as S from "../../forms.styles";

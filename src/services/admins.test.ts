@@ -1,56 +1,56 @@
-import { CreateUserI } from "@/types/user";
 import { SuccessI, ErrorI } from "@/types/api";
-import { User } from "@/generated/prisma";
-import UsersService from "./users";
+import { Admin } from "@/generated/prisma";
+import AdminsService from "./admins";
+import { CreateAdminI } from "@/types/admin";
 
 global.fetch = jest.fn();
 
 const mockedFetch = fetch as jest.Mock;
 
-describe("Users Service", () => {
+describe("Admins Service", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  describe("on Create User", () => {
-    const newUser: CreateUserI = {
-      username: "Create Mocked User",
+  describe("on Create Admin", () => {
+    const newAdmin: CreateAdminI = {
+      username: "Create Mocked Admin",
       password: "MockedPassword123",
     };
 
-    it("returns user data on success", async () => {
-      const mockUser: User = {
+    it("returns Admin data on success", async () => {
+      const mockAdmin: Admin = {
         id: 1,
-        username: newUser.username,
-        password: newUser.password,
+        username: newAdmin.username,
+        password: newAdmin.password,
       };
 
       mockedFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => mockUser,
+        json: async () => mockAdmin,
       });
 
-      const result = await UsersService.createUser(newUser);
+      const result = await AdminsService.createAdmin(newAdmin);
 
-      expect(fetch).toHaveBeenCalledWith("/api/users", expect.any(Object));
-      expect(result).toEqual(mockUser);
+      expect(fetch).toHaveBeenCalledWith("/api/admins", expect.any(Object));
+      expect(result).toEqual(mockAdmin);
     });
 
-    it("throws error on existing user", async () => {
-      const error: ErrorI = { message: "User exists", status: 400 };
+    it("throws error on existing Admin", async () => {
+      const error: ErrorI = { message: "Admin exists", status: 400 };
 
       mockedFetch.mockResolvedValueOnce({
         ok: false,
         json: async () => error,
       });
 
-      const result = UsersService.createUser(newUser);
+      const result = AdminsService.createAdmin(newAdmin);
 
       await expect(result).rejects.toEqual(error);
     });
   });
 
-  describe("on Delete User", () => {
+  describe("on Delete Admin", () => {
     it("returns message on success", async () => {
       const success: SuccessI = {
         message: "Deleted Successfully",
@@ -62,50 +62,50 @@ describe("Users Service", () => {
         json: async () => success,
       });
 
-      const result = await UsersService.deleteUser(1);
+      const result = await AdminsService.deleteAdmin(1);
 
-      expect(fetch).toHaveBeenCalledWith("/api/users/1", expect.any(Object));
+      expect(fetch).toHaveBeenCalledWith("/api/admins/1", expect.any(Object));
       expect(result).toEqual(success);
     });
 
     it("throws error object on delete failure", async () => {
-      const error: ErrorI = { message: "User not found", status: 404 };
+      const error: ErrorI = { message: "Admin not found", status: 404 };
 
       mockedFetch.mockResolvedValueOnce({
         ok: false,
         json: async () => error,
       });
 
-      const result = UsersService.deleteUser(123);
+      const result = AdminsService.deleteAdmin(123);
 
       await expect(result).rejects.toEqual(error);
     });
   });
 
-  describe("on Get Users", () => {
-    it("returns List of users", async () => {
-      const users: User[] = [
+  describe("on Get Admins", () => {
+    it("returns List of Admins", async () => {
+      const Admins: Admin[] = [
         { id: 1, username: "a", password: "p" },
         { id: 2, username: "b", password: "p" },
       ];
 
       mockedFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => users,
+        json: async () => Admins,
       });
 
-      const result = await UsersService.getUsers();
+      const result = await AdminsService.getAdmins();
 
       expect(fetch).toHaveBeenCalledWith(
-        `${process.env.NEXT_HOSTNAME}/api/users`,
+        `${process.env.NEXT_HOSTNAME}/api/admins`,
         expect.any(Object)
       );
-      expect(result).toEqual(users);
+      expect(result).toEqual(Admins);
     });
 
     it("throw error on get list failure", async () => {
       const error: ErrorI = {
-        message: "Interval server error on Get users",
+        message: "Interval server error on Get Admins",
         status: 500,
       };
 
@@ -114,7 +114,7 @@ describe("Users Service", () => {
         json: async () => error,
       });
 
-      const result = UsersService.getUsers();
+      const result = AdminsService.getAdmins();
 
       await expect(result).rejects.toEqual(error);
     });

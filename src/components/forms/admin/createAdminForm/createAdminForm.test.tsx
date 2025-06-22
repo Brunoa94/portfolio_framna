@@ -1,9 +1,9 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 
 import { useAlertStore } from "@/hooks/useAlertStore";
-import UsersService from "@/services/users";
-import { CreateUserI } from "@/types/user";
-import CreateUserForm from "./createUserForm";
+import UsersService from "@/services/admins";
+import { CreateUserI } from "@/types/admin";
+import CreateUserForm from "./createAdminForm";
 
 jest.mock("@/services/users", () => ({
   __esModule: true,

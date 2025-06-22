@@ -3,7 +3,7 @@ import React from "react";
 import useOpen from "@/hooks/useOpen";
 import FullscreenLayer from "@/components/common/fullscreenLayer/fullscreenLayer";
 import { LoginButton } from "@/components/globals/buttons";
-import LoginAdminForm from "@/components/forms/user/loginAdminForm/loginAdminForm";
+import LoginAdminForm from "@/components/forms/admin/loginAdminForm/loginAdminForm";
 
 const LoginAdmin = () => {
   const { open, close, isOpen, closeOnFullscreen } = useOpen();

@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 
-export const UsersList = styled.ul`
+export const AdminList = styled.ul`
   display: flex;
   gap: 24px;
   flex-direction: column;

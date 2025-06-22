@@ -1,13 +1,13 @@
 import React from "react";
 import * as S from "./page.styles";
 import ProjectsDashboard from "@/components/adminDashboard/projectsDashboard/projectsDashboard";
-import UsersDashboard from "@/components/adminDashboard/usersDashboard/usersDashboard";
+import AdminsDashboard from "@/components/adminDashboard/adminsDashboard/adminsDashboard";
 
 export default function AdminDashboard() {
   return (
     <S.Container>
       <ProjectsDashboard />
-      <UsersDashboard />
+      <AdminsDashboard />
     </S.Container>
   );
 }

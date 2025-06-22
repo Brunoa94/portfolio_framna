@@ -1,4 +1,4 @@
-import { PrismaClient, User } from "@/generated/prisma";
+import { Admin, PrismaClient } from "@/generated/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import { handlePrismaError } from "@/utils/prisma-error";
 import { hashPassword } from "@/lib/passwords";
@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 
 export async function GET() {
   try {
-    const users: User[] = await prisma.user.findMany();
+    const users: Admin[] = await prisma.admin.findMany();
 
     return NextResponse.json(users, { status: 200 });
   } catch (e) {
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
 
     const hashedPassword = await hashPassword(password);
 
-    const newUser = await prisma.user.create({
+    const newUser = await prisma.admin.create({
       data: { username, password: hashedPassword },
       select: {
         id: true,

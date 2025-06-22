@@ -1,13 +1,13 @@
-import { User } from "@/generated/prisma";
+import { Admin } from "@/generated/prisma";
 import { ErrorI, SuccessI } from "@/types/api";
-import { CreateUserI } from "@/types/user";
+import { CreateAdminI } from "@/types/admin";
 
-class UsersService {
+class AdminsService {
   constructor() {}
 
-  static async deleteUser(id: number): Promise<SuccessI> {
+  static async deleteAdmin(id: number): Promise<SuccessI> {
     try {
-      const response = await fetch(`/api/users/${id}`, {
+      const response = await fetch(`/api/admins/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -27,9 +27,9 @@ class UsersService {
     }
   }
 
-  static async createUser(body: CreateUserI): Promise<User> {
+  static async createAdmin(body: CreateAdminI): Promise<Admin> {
     try {
-      const response = await fetch("/api/users", {
+      const response = await fetch("/api/admins", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,15 +44,15 @@ class UsersService {
 
       const data = await response.json();
 
-      return data as User;
+      return data as Admin;
     } catch (error) {
       throw error as ErrorI;
     }
   }
 
-  static async getUsers(): Promise<User[]> {
+  static async getAdmins(): Promise<Admin[]> {
     try {
-      const response = await fetch(`${process.env.NEXT_HOSTNAME}/api/users`, {
+      const response = await fetch(`${process.env.NEXT_HOSTNAME}/api/admins`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -66,11 +66,11 @@ class UsersService {
 
       const data = await response.json();
 
-      return data as User[];
+      return data as Admin[];
     } catch (e: unknown) {
       throw e as ErrorI;
     }
   }
 }
 
-export default UsersService;
+export default AdminsService;

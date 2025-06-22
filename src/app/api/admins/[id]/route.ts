@@ -11,7 +11,7 @@ export async function DELETE(
   const id = (await params).id;
 
   try {
-    await prisma.user.delete({ where: { id: Number(id) } });
+    await prisma.admin.delete({ where: { id: Number(id) } });
 
     return NextResponse.json(
       { message: "Deleted Successfully" },
@@ -20,7 +20,7 @@ export async function DELETE(
       }
     );
   } catch (e) {
-    const { message, status } = handlePrismaError(e, "Delete User");
+    const { message, status } = handlePrismaError(e, "Delete Admin");
     return NextResponse.json({ message, status }, { status });
   }
 }
