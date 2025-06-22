@@ -1,3 +1,4 @@
+import { CommonCol } from "@/components/globals/common";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -15,9 +16,7 @@ export const Button = styled.button`
   margin-right: 16px;
 `;
 
-export const OptionsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+export const OptionsContainer = styled(CommonCol)`
   padding: 24px;
   background-color: white;
   border-radius: 8px;

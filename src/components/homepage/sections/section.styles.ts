@@ -1,10 +1,9 @@
 "use client";
+import { CommonRow } from "@/components/globals/common";
 import { device } from "@/theme/breakpoints";
 import styled from "styled-components";
 
-export const Section = styled.div`
-  display: flex;
-  align-items: center;
+export const Section = styled(CommonRow)`
   gap: 8px;
 
   & svg {

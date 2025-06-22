@@ -1,22 +1,21 @@
 "use client";
 
+import { ColContainer } from "@/components/globals/common";
 import { device } from "@/theme/breakpoints";
 import { styled } from "styled-components";
 
-export const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+export const Container = styled(ColContainer)`
   min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  padding-top: 60px;
 `;
 
-export const MainContainer = styled.div`
-  width: 100%;
-  display: flex;
+export const MainContainer = styled(ColContainer)`
   justify-content: center;
-  margin-top: 80px;
   padding: 16px;
+  align-items: center;
+  width: 100%;
 
   @media ${device.tablet} {
     padding-top: 32px;

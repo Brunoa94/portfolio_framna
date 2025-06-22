@@ -7,7 +7,8 @@ const Rocklee = () => {
     <S.Container>
       <Image src="/rocklee.webp" width={280} height={250} alt="Rock Lee" />
       <S.Caption>
-        Rock lee is a Naruto character that represents the hard work.
+        Rock lee is a Naruto character that represents the hard and consistent
+        work, the self belief when the odds are against, and the superation.
       </S.Caption>
     </S.Container>
   );

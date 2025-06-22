@@ -1,5 +1,6 @@
 "use client";
 
+import { ColContainer, CommonRow, ListRow } from "@/components/globals/common";
 import { device } from "@/theme/breakpoints";
 import styled from "styled-components";
 
@@ -8,10 +9,11 @@ export const ProjectItem = styled.li`
   align-items: center;
   gap: 8px;
   width: 100%;
-  flex-direction: column;
   padding-bottom: 16px;
   border-bottom: 2px solid black;
   border-radius: 8px;
+  flex-direction: column;
+  width: 100%;
 
   @media ${device.tablet} {
     flex-direction: row;
@@ -22,16 +24,11 @@ export const ProjectItem = styled.li`
   }
 `;
 
-export const Col = styled.div<{ gap?: string }>`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+export const Col = styled(ColContainer)<{ gap?: string }>`
   gap: ${(props) => (props.gap ? props.gap : "6px")};
 `;
 
-export const Row = styled.div`
-  display: flex;
-  align-items: center;
+export const Row = styled(CommonRow)`
   gap: 12px;
 `;
 
@@ -55,11 +52,8 @@ export const Button = styled.button`
   }
 `;
 
-export const Technologies = styled.ul`
-  display: flex;
-  align-items: center;
+export const Technologies = styled(ListRow)`
   gap: 6px;
-  list-style: none;
 `;
 
 export const Technology = styled.li`

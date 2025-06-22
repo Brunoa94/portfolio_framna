@@ -1,5 +1,6 @@
 "use client";
 
+import { ColContainer } from "@/components/globals/common";
 import styled from "styled-components";
 
 export const SkillCircle = styled.div`
@@ -18,11 +19,9 @@ export const SkillCircle = styled.div`
   );
 `;
 
-export const Container = styled.div`
-  display: flex;
-  align-items: center;
+export const Container = styled(ColContainer)`
   gap: 8px;
   flex-shrink: 0;
-  flex-direction: column;
   width: 90px;
+  align-items: center;
 `;

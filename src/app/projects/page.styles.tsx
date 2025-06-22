@@ -1,22 +1,20 @@
 "use client";
 
 import styled from "styled-components";
+import { MainContainer } from "../layout.styles";
+import { ListCol } from "@/components/globals/common";
 
-export const Container = styled.main`
-  display: flex;
+export const Container = styled(MainContainer)`
   width: 100%;
   max-width: 900px;
-  flex-direction: column;
   gap: 12px;
   padding: 32px;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 24px;
 `;
 
-export const ProjectsList = styled.ul`
-  display: flex;
+export const ProjectsList = styled(ListCol)`
   gap: 24px;
-  flex-direction: column;
   width: 100%;
 `;
 
@@ -25,6 +23,7 @@ export const Section = styled.section`
   flex-direction: column;
   gap: 12px;
   margin-bottom: 24px;
+  width: 100%;
 `;
 
 export const List = styled.ul`

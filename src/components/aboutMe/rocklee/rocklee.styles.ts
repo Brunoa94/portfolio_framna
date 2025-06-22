@@ -1,4 +1,5 @@
 "use client";
+
 import styled from "styled-components";
 
 export const Container = styled.figure`
@@ -10,5 +11,5 @@ export const Container = styled.figure`
 
 export const Caption = styled.figcaption`
   font-size: 14px;
-  text-align: center;
+  text-align: justify;
 `;

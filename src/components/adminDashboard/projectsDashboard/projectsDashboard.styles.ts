@@ -1,12 +1,11 @@
 "use client";
 
+import { ListCol, SectionContainer } from "@/components/globals/common";
 import { device } from "@/theme/breakpoints";
 import styled from "styled-components";
 
-export const Section = styled.section`
-  display: flex;
+export const Section = styled(SectionContainer)`
   width: 100%;
-  flex-direction: column;
   gap: 12px;
   padding: 32px;
   background-color: rgba(0, 0, 0, 0.1);
@@ -24,11 +23,10 @@ export const Article = styled.article`
   margin-bottom: 24px;
 `;
 
-export const List = styled.ul`
-  display: flex;
-  flex-direction: column;
+export const List = styled(ListCol)`
   gap: 32px;
   width: 100%;
+  align-items: flex-start;
 `;
 
 export const Row = styled.div`

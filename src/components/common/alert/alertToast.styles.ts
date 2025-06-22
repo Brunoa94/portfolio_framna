@@ -1,3 +1,4 @@
+import { CommonRow } from "@/components/globals/common";
 import styled from "styled-components";
 
 export const AlertContainer = styled.div<{ $isActive?: boolean }>`
@@ -20,8 +21,6 @@ export const AlertContainer = styled.div<{ $isActive?: boolean }>`
   z-index: 5000;
 `;
 
-export const Row = styled.div`
-  display: flex;
-  align-items: center;
+export const Row = styled(CommonRow)`
   gap: 8px;
 `;

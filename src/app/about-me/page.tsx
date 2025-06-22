@@ -54,7 +54,7 @@ export default function AboutMe() {
         </S.TextContainer>
         <Rocklee />
       </S.Introduction>
-      <S.TextContainer>
+      <S.TextContainer margin="32px 0">
         <SectionTitle>Technical Skills</SectionTitle>
         <S.SkillsContainer>
           {skills.map((skill: SkillI, index: number) => (

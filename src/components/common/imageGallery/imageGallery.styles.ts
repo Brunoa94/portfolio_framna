@@ -1,3 +1,4 @@
+import { CommonRow } from "@/components/globals/common";
 import styled from "styled-components";
 
 export const ImageWrapper = styled.div`
@@ -11,9 +12,7 @@ export const ImageWrapper = styled.div`
   gap: 12px;
 `;
 
-export const ButtonsRow = styled.div`
-  display: flex;
-  align-items: center;
+export const ButtonsRow = styled(CommonRow)`
   gap: 32px;
   width: 100%;
   justify-content: center;
@@ -34,8 +33,6 @@ export const ImageContainer = styled.div`
   width: 100%;
 `;
 
-export const Row = styled.div`
-  display: flex;
-  align-items: center;
+export const Row = styled(CommonRow)`
   gap: 6px;
 `;

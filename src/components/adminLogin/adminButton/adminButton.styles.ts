@@ -1,5 +1,6 @@
 "use client";
 
+import { CommonRow } from "@/components/globals/common";
 import styled from "styled-components";
 
 export const LogoutButton = styled.button`
@@ -28,8 +29,6 @@ export const LoginButton = styled.button`
     }
 `;
 
-export const Row = styled.div`
-  display: flex;
-  align-items: center;
+export const Row = styled(CommonRow)`
   gap: 12px;
 `;

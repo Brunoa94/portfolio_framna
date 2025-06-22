@@ -2,23 +2,22 @@
 
 import { device } from "@/theme/breakpoints";
 import styled from "styled-components";
+import { MainContainer } from "../layout.styles";
+import { SectionContainer } from "@/components/globals/common";
 
-export const Container = styled.main`
+export const Container = styled(MainContainer)`
   width: 100%;
   max-width: 1200px;
   border-radius: 24px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 32px;
   font-family: var(--font-roboto), sans-serif
   gap: 32px;
 `;
 
-export const Introduction = styled.section`
-  display: flex;
+export const Introduction = styled(SectionContainer)`
   width: 100%;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 24px;
   text-align: justify;
   margin-top: 32px;
@@ -29,12 +28,13 @@ export const Introduction = styled.section`
   }
 `;
 
-export const TextContainer = styled.article`
+export const TextContainer = styled.article<{ margin?: string }>`
   display: flex;
   flex-direction: column;
   gap: 12px;
   align-items: center;
-  font-family: (--var);
+  font-family: var(--font-nunito), sans-serif;
+  margin: ${(props) => props.margin && props.margin};
 `;
 
 export const SkillsContainer = styled.section`

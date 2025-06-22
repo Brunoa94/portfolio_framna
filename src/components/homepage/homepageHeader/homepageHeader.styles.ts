@@ -1,16 +1,13 @@
 "use client";
+import { CommonRow, SectionContainer } from "@/components/globals/common";
 import { device } from "@/theme/breakpoints";
 import styled from "styled-components";
 
-export const Container = styled.section`
-  display: flex;
-  flex-direction: column;
+export const Container = styled(SectionContainer)`
   gap: 12px;
 `;
 
-export const Row = styled.div`
-  display: flex;
-  align-items: center;
+export const Row = styled(CommonRow)`
   gap: 6px;
 `;
 
