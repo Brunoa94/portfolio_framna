@@ -17,6 +17,7 @@ body {
   height: 100%;
   background-image: url("/purple_watercolour_background_corners.jpg");
   background-size: cover;
+  text-align: justify;
 }
 
 * {

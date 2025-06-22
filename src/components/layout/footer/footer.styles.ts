@@ -8,6 +8,7 @@ export const Footer = styled.footer`
   width: 100%;
   align-items: center;
   padding: 16px;
+  margin-top: auto;
 
   @media ${device.tablet} {
     padding: 16px 32px;

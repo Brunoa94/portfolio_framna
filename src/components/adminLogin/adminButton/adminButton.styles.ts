@@ -5,6 +5,7 @@ import styled from "styled-components";
 export const LogoutButton = styled.button`
   border: none;
   background: none;
+  cursor: pointer;
 `;
 
 export const LoginButton = styled.button`
