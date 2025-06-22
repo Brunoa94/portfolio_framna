@@ -12,6 +12,12 @@ export const Header = styled.header`
   height: 80px;
   top: 0;
   border-radius: 0 0 16px 16px;
+  background: #ffffff;
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 12%,
+    rgba(64, 17, 107, 1) 100%
+  );
 `;
 
 export const LogoContainer = styled.div``;

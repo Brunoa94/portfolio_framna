@@ -13,4 +13,5 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
+  margin-left: auto;
 `;
