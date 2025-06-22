@@ -29,12 +29,15 @@ export const ItemTitle = styled.h3<{ color?: string }>`
   color: ${(props) => props.color && props.color};
 `;
 
-export const Paragraph = styled.p`
+export const Paragraph = styled.p<{ color?: string; $textAlign?: string }>`
   font-size: 16px;
+  color: ${(props) => props.color && props.color};
+  text-align: ${(props) => props.$textAlign && props.$textAlign};
 `;
 
 export const SmallText = styled.span`
   font-size: 14px;
+  text-align: center;
 `;
 
 export const MediumText = styled.span<{ $hasColor?: string }>`
