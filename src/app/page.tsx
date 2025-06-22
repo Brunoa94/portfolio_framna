@@ -1,34 +1,15 @@
-"use client";
-import { signIn, useSession } from "next-auth/react";
-import { useState } from "react";
-import { Project } from "@/generated/prisma";
+import AboutHeader from "@/components/homepage/homepageHeader/homepageHeader";
 import * as S from "./page.styles";
+import Section from "@/components/homepage/sections/section";
 
 export default function Home() {
-  const { data: session } = useSession();
-  const [projects, setProjects] = useState<Project[]>([]);
-
-  // useEffect(() => {
-  //   const fetchProjects = async () => {
-  //     try {
-  //       const response: ProjectI[] = await ProjectsService.getProjects();
-  //       setProjects(response);
-  //       console.log("RESPONSE: " + JSON.stringify(response[0]));
-  //     } catch (e) {
-  //       console.log("ERROR: " + JSON.stringify(e));
-  //     }
-  //   };
-
-  //   fetchProjects();
-  // }, []);
-
-  async function doLogin() {
-    await signIn("credentials", {
-      username: "bruno",
-      password: "nowishashed",
-      redirect: false,
-    });
-  }
-
-  return <S.Container></S.Container>;
+  return (
+    <S.Container>
+      <AboutHeader />
+      <S.Sections>
+        <Section link="/projects" name="Projects" />
+        <Section link="/about-me" name="About Me" />
+      </S.Sections>
+    </S.Container>
+  );
 }

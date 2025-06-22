@@ -1,12 +1,21 @@
+"use client";
 import styled from "styled-components";
-import { device } from "@/theme/breakpoints";
 
 export const Container = styled.div`
-  background-color: red;
-  width: 300px;
-  height: 200px;
+  width: 100%;
+  max-width: 1200px;
+  height: 100vh;
+  max-height: 600px;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+`;
 
-  @media ${device.tablet} {
-    background-color: green;
-  }
+export const Sections = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  align-items: flex-start;
+  margin-top: auto;
 `;
