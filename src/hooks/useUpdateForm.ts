@@ -40,7 +40,6 @@ export default function useUpdateForm({ project, handleClose }: Props) {
       } catch (error) {
         const e = error as ErrorI;
         updateAlert({ message: e.message, status: e.status });
-        handleClose();
       }
     },
     [handleClose, project, updateAlert, updateProject]

@@ -44,10 +44,7 @@ const LoginAdminForm = ({ handleClose }: LoginAdminI) => {
         handleClose();
       } catch {
         updateAlert({ message: "Authentication failed", status: 401 });
-        handleClose();
       }
-
-      handleClose();
     },
     [handleClose, updateAlert]
   );

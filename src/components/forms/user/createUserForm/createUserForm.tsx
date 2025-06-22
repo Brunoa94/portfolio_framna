@@ -31,12 +31,11 @@ const CreateUserForm = ({ handleClose }: Props) => {
       try {
         await createUser(body);
         updateAlert({ message: "User created", status: 200 });
+        handleClose();
       } catch (error) {
         const e = error as ErrorI;
         updateAlert({ message: e.message, status: e.status });
       }
-
-      handleClose();
     },
     [handleClose, updateAlert, createUser]
   );

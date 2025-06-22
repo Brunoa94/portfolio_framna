@@ -45,7 +45,6 @@ const CreateProjectForm = ({ handleClose }: Props) => {
       } catch (error) {
         const e = error as ErrorI;
         updateAlert({ message: e.message, status: e.status });
-        handleClose();
       }
     },
     [handleClose, updateAlert, createProject]
