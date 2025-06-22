@@ -20,7 +20,7 @@ export const Input = styled.input`
 `;
 
 export const Label = styled.label`
-  var(--font-roboto), sans-serif
+  font-family: var(--font-roboto), sans-serif
   font-size: 16px;
   font-weight: bold;
 `;

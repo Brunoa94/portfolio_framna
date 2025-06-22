@@ -38,7 +38,7 @@ export const Row = styled.div`
 export const Button = styled.button`
   padding: 16px 24px;
   border-radius : 8px
-  var(--font-roboto), sans-serif
+  font-family: var(--font-roboto), sans-serif
   font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
@@ -63,6 +63,6 @@ export const Technologies = styled.ul`
 `;
 
 export const Technology = styled.li`
-  var(--font-roboto), sans-serif
+  font-family: font-family: var(--font-roboto), sans-serif
   font-size: 14px;
 `;

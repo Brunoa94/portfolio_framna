@@ -1,18 +1,18 @@
-export type ErrorI = {
+export interface ErrorI {
   message: string;
   status: number;
-};
+}
 
-export type SuccessI = {
+export interface SuccessI {
   message: string;
   status: number;
-};
+}
 
-export type ResponseImageI = {
+export interface ResponseImageI {
   image: string;
   status: number;
-};
+}
 
-export type DeleteImageI = {
+export interface DeleteImageI {
   imgSrc: string;
-};
+}

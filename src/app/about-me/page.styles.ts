@@ -11,7 +11,7 @@ export const Container = styled.main`
   flex-direction: column;
   align-items: center;
   padding: 32px;
-  var(--font-roboto), sans-serif
+  font-family: var(--font-roboto), sans-serif
   gap: 32px;
 `;
 
@@ -33,7 +33,8 @@ export const TextContainer = styled.article`
   display: flex;
   flex-direction: column;
   gap: 12px;
-  text-justify: ;
+  align-items: center;
+  font-family: (--var);
 `;
 
 export const SkillsContainer = styled.section`

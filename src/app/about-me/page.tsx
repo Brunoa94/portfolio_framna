@@ -1,11 +1,6 @@
 import React from "react";
 import * as S from "./page.styles";
-import {
-  Paragraph,
-  Section,
-  SectionTitle,
-  Title,
-} from "@/components/globals/fonts";
+import { Paragraph, SectionTitle, Title } from "@/components/globals/fonts";
 import { SkillI, skills } from "@/data/skills";
 import Skill from "@/components/aboutMe/skill/skill";
 import Rocklee from "@/components/aboutMe/rocklee/rocklee";
@@ -59,14 +54,14 @@ export default function AboutMe() {
         </S.TextContainer>
         <Rocklee />
       </S.Introduction>
-      <Section>
+      <S.TextContainer>
         <SectionTitle>Technical Skills</SectionTitle>
         <S.SkillsContainer>
           {skills.map((skill: SkillI, index: number) => (
             <Skill key={`skill-${index}`} name={skill.name} icon={skill.icon} />
           ))}
         </S.SkillsContainer>
-      </Section>
+      </S.TextContainer>
     </S.Container>
   );
 }

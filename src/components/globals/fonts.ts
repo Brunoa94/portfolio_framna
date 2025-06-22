@@ -3,13 +3,13 @@
 import styled from "styled-components";
 
 export const Title = styled.h1<{ $hasmargin?: string }>`
-  var(--font-roboto), sans-serif
+  font-family: var(--font-roboto), sans-serif
   font-weight: bold;
   margin: ${(props) => props.$hasmargin};
 `;
 
 export const Section = styled.span`
-  var(--font-roboto), sans-serif
+  font-family: var(--font-roboto), sans-serif
   font-size: 16px;
   gap: 16px;
   width: 100%;
@@ -19,12 +19,12 @@ export const Section = styled.span`
 `;
 
 export const SectionTitle = styled.h2`
-  var(--font-roboto), sans-serif
+  font-family: var(--font-roboto), sans-serif
   font-weight: bold;
 `;
 
 export const ItemTitle = styled.h3<{ color?: string }>`
-  var(--font-roboto), sans-serif
+  font-family: var(--font-roboto), sans-serif
   font-weight: bold;
   color: ${(props) => props.color && props.color};
 `;

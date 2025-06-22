@@ -7,7 +7,7 @@ export const SubmitButton = styled.button`
   padding: 0 24px;
   height: 40px;
   background-color: #2e003b;
-  var(--font-roboto), sans-serif
+  font-family: var(--font-roboto), sans-serif
   font-size: 16px;
   text-transform: uppercase;
   color: white;
@@ -21,7 +21,7 @@ export const ActionButton = styled.button<{ color?: string; margin?: string }>`
   padding: 0 24px;
   height: 32px;
   background-color: ${(props) => props.color};
-  var(--font-roboto), sans-serif
+  font-family: var(--font-roboto), sans-serif
   font-size: 14px;
   text-transform: uppercase;
   color: white;
@@ -34,7 +34,7 @@ export const ActionButton = styled.button<{ color?: string; margin?: string }>`
 export const LoginButton = styled.button`
     padding: 16px 24px;
     border-radius : 8px
-    var(--font-roboto), sans-serif
+    font-family: var(--font-roboto), sans-serif
     font-size: 12px;
     font-weight: bold;
     text-transform: uppercase;

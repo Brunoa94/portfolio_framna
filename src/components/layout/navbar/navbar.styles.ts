@@ -9,7 +9,8 @@ export const Navbar = styled.nav`
   gap: 16px;
 
   a {
-    var(--font-nunito), sans-serif
+    font-family: var(--font-nunito), sans-serif;
+
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;

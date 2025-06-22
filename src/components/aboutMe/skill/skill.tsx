@@ -10,7 +10,7 @@ interface Props {
 const Skill = ({ name, icon }: Props) => {
   return (
     <S.Container>
-      {icon}{" "}
+      {icon}
       <Paragraph color="#40116b" $textAlign="center">
         {name}
       </Paragraph>
