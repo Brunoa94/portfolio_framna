@@ -82,7 +82,7 @@ export const Technology = styled.li`
 export const ImagesRow = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   @media ${device.tablet} {
