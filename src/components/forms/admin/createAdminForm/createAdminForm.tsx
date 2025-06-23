@@ -16,6 +16,7 @@ interface Props {
 const CreateAdminForm = ({ handleClose }: Props) => {
   const updateAlert = useAlertStore((state: AlertStore) => state.updateAlert);
   const createUser = useAdminStore((state: AdminStore) => state.createAdmin);
+  const isLoading = useAdminStore((state: AdminStore) => state.isLoading);
 
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
@@ -30,7 +31,7 @@ const CreateAdminForm = ({ handleClose }: Props) => {
 
       try {
         await createUser(body);
-        updateAlert({ message: "User created", status: 200 });
+        updateAlert({ message: "Admin created", status: 200 });
         handleClose();
       } catch (error) {
         const e = error as ErrorI;
@@ -44,7 +45,9 @@ const CreateAdminForm = ({ handleClose }: Props) => {
     <Form onSubmit={handleSubmit}>
       <InputText id="username" name="Username" required />
       <InputPassword id="password" name="Password" required />
-      <SubmitButton type="submit">Submit</SubmitButton>
+      <SubmitButton type="submit">
+        {isLoading ? "Creating Admin" : "Submit"}
+      </SubmitButton>
     </Form>
   );
 };

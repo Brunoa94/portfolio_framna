@@ -8,6 +8,7 @@ import { Title } from "@/components/globals/fonts";
 import InputPassword from "@/components/inputs/inputPassword";
 import { useAlertStore } from "@/hooks/useAlertStore";
 import { AlertStore } from "@/store/alertStore";
+import { AdminStore, useAdminStore } from "@/store/adminStore";
 
 interface LoginAdminI {
   handleClose: () => void;
@@ -15,6 +16,10 @@ interface LoginAdminI {
 
 const LoginAdminForm = ({ handleClose }: LoginAdminI) => {
   const updateAlert = useAlertStore((state: AlertStore) => state.updateAlert);
+  const isLoading = useAdminStore((state: AdminStore) => state.isLoading);
+  const updateLoading = useAdminStore(
+    (state: AdminStore) => state.updateLoading
+  );
 
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
@@ -29,13 +34,14 @@ const LoginAdminForm = ({ handleClose }: LoginAdminI) => {
       };
 
       try {
+        updateLoading(true);
         const response = await signIn("credentials", {
           username: body.username,
           password: body.password,
           redirect: true,
           callbackUrl: "/admin-dashboard",
         });
-
+        updateLoading(false);
         if (!response?.ok) {
           updateAlert({ message: "Authentication failed", status: 401 });
         }
@@ -45,7 +51,7 @@ const LoginAdminForm = ({ handleClose }: LoginAdminI) => {
         updateAlert({ message: "Authentication failed", status: 401 });
       }
     },
-    [handleClose, updateAlert]
+    [handleClose, updateAlert, updateLoading]
   );
 
   return (
@@ -53,7 +59,9 @@ const LoginAdminForm = ({ handleClose }: LoginAdminI) => {
       <Title $hasmargin="0 0 12px 0">Login as Admin</Title>
       <InputText id="username" name="Username" required />
       <InputPassword id="password" name="Password" required />
-      <SubmitButton type="submit">Submit</SubmitButton>
+      <SubmitButton type="submit">
+        {isLoading ? "Logging in..." : "Submit"}
+      </SubmitButton>
     </S.Form>
   );
 };

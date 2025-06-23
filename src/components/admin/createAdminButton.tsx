@@ -6,26 +6,26 @@ import useOpen from "@/hooks/useOpen";
 import React from "react";
 import dynamic from "next/dynamic";
 
-const CreateUserForm = dynamic(
+const CreateAdminForm = dynamic(
   () => import("../forms/admin/createAdminForm/createAdminForm"),
   { ssr: false }
 );
 
-const CreateUserButton = () => {
+const CreateAdminButton = () => {
   const { open, close, isOpen, closeOnFullscreen } = useOpen();
 
   return (
     <>
       <ActionButton $hasmargin="0 0 0 auto" color="green" onClick={open}>
-        Create User
+        Create Admin
       </ActionButton>
       {isOpen && (
         <FullscreenLayer handleClose={closeOnFullscreen}>
-          <CreateUserForm handleClose={close} />
+          <CreateAdminForm handleClose={close} />
         </FullscreenLayer>
       )}
     </>
   );
 };
 
-export default CreateUserButton;
+export default CreateAdminButton;

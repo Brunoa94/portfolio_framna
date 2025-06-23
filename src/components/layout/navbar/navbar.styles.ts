@@ -10,10 +10,10 @@ export const Navbar = styled.nav`
 
   a {
     font-family: var(--font-nunito), sans-serif;
-
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
+    color: black;
 
     &:hover {
       opacity: 0.8;

@@ -31,7 +31,7 @@ describe("Create User form", () => {
 
   it("with valid values submit request and show alert with successfull message", async () => {
     const successfullMessage = {
-      message: "User created",
+      message: "Admin created",
       status: 200,
     };
 

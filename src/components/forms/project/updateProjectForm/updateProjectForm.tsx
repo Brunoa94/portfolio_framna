@@ -6,6 +6,7 @@ import { Form } from "../../forms.styles";
 import { Project } from "@/generated/prisma";
 import InputTextArea from "@/components/inputs/inputTextArea";
 import useUpdateForm from "@/hooks/useUpdateForm";
+import { ProjectStore, useProjectStore } from "@/store/projectStore";
 
 interface UpdateProjectFormI {
   project: Project;
@@ -13,6 +14,7 @@ interface UpdateProjectFormI {
 }
 
 const UpdateProjectForm = ({ project, handleClose }: UpdateProjectFormI) => {
+  const isLoading = useProjectStore((state: ProjectStore) => state.isLoading);
   const { handleUpdate, uploadImages } = useUpdateForm({
     project,
     handleClose,
@@ -27,7 +29,9 @@ const UpdateProjectForm = ({ project, handleClose }: UpdateProjectFormI) => {
         value={project.description}
       />
       <InputImage images={project.images} updateForm={uploadImages} />
-      <SubmitButton type="submit">Submit</SubmitButton>
+      <SubmitButton type="submit">
+        {isLoading ? "Loading..." : "Submit"}
+      </SubmitButton>
     </Form>
   );
 };

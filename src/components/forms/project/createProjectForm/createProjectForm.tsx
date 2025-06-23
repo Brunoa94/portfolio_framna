@@ -22,6 +22,7 @@ const CreateProjectForm = ({ handleClose }: Props) => {
   const createProject = useProjectStore(
     (state: ProjectStore) => state.createProject
   );
+  const isLoading = useProjectStore((state: ProjectStore) => state.isLoading);
 
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
@@ -60,7 +61,9 @@ const CreateProjectForm = ({ handleClose }: Props) => {
       <InputText id="title" name="Title" />
       <InputTextArea id="description" name="Description" />
       <InputImage updateForm={uploadImages} />
-      <SubmitButton type="submit">Submit</SubmitButton>
+      <SubmitButton type="submit">
+        {isLoading ? "Creating Project..." : "Submit"}
+      </SubmitButton>
     </Form>
   );
 };
