@@ -8,6 +8,12 @@ export const Title = styled.h1<{ $hasmargin?: string }>`
   margin: ${(props) => props.$hasmargin};
 `;
 
+export const ArticleTitle = styled.h3`
+  font-family: var(--font-roboto), sans-serif
+  font-weight: bold;
+  font-size: 18px;
+`;
+
 export const Section = styled.span`
   font-family: var(--font-roboto), sans-serif
   font-size: 16px;

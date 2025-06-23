@@ -1,4 +1,4 @@
-import { Title } from "@/components/globals/fonts";
+import { ArticleTitle } from "@/components/globals/fonts";
 import React, { use } from "react";
 import { Article, Row } from "../common.styles";
 import CreateUserButton from "@/components/admin/createAdminButton";
@@ -13,7 +13,7 @@ const UsersDashboard = () => {
     <S.Container>
       <Article>
         <Row>
-          <Title>Users</Title>
+          <ArticleTitle>Users</ArticleTitle>
           <CreateUserButton />
         </Row>
         <AdminList initialUsers={initialUsers} />

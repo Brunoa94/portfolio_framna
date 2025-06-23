@@ -54,14 +54,14 @@ export default function AboutMe() {
         </S.TextContainer>
         <Rocklee />
       </S.Introduction>
-      <S.TextContainer margin="32px 0">
+      <S.SkillsSection>
         <SectionTitle>Technical Skills</SectionTitle>
         <S.SkillsContainer>
           {skills.map((skill: SkillI, index: number) => (
             <Skill key={`skill-${index}`} name={skill.name} icon={skill.icon} />
           ))}
         </S.SkillsContainer>
-      </S.TextContainer>
+      </S.SkillsSection>
     </S.Container>
   );
 }

@@ -1,8 +1,8 @@
 "use client";
 
+import { MainContainer } from "@/components/globals/common";
 import { device } from "@/theme/breakpoints";
 import styled from "styled-components";
-import { MainContainer } from "../layout.styles";
 
 export const Container = styled(MainContainer)`
   gap: 32px;

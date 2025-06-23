@@ -2,16 +2,24 @@
 
 import { device } from "@/theme/breakpoints";
 import styled from "styled-components";
-import { MainContainer } from "../layout.styles";
-import { SectionContainer } from "@/components/globals/common";
+import {
+  ListRow,
+  MainContainer,
+  SectionContainer,
+} from "@/components/globals/common";
 
 export const Container = styled(MainContainer)`
   width: 100%;
   max-width: 1200px;
   border-radius: 24px;
   align-items: center;
-  font-family: var(--font-roboto), sans-serif
+  font-family: var(--font-roboto), sans-serif;
   gap: 32px;
+  padding: 16px;
+
+  @media ${device.desktop} {
+    padding: 32px;
+  }
 `;
 
 export const Introduction = styled(SectionContainer)`
@@ -20,7 +28,6 @@ export const Introduction = styled(SectionContainer)`
   justify-content: center;
   gap: 24px;
   text-align: justify;
-  margin-top: 32px;
 
   @media ${device.desktop} {
     flex-direction: row;
@@ -37,7 +44,15 @@ export const TextContainer = styled.article<{ margin?: string }>`
   margin: ${(props) => props.margin && props.margin};
 `;
 
-export const SkillsContainer = styled.section`
+export const SkillsSection = styled(SectionContainer)`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  font-family: var(--font-nunito), sans-serif;
+`;
+
+export const SkillsContainer = styled(ListRow)`
   width: 100%;
   display: flex;
   align-items: flex-start;

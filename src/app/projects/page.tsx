@@ -9,18 +9,14 @@ function Projects() {
 
   return (
     <S.Container>
-      <S.Section>
-        <Title>Projects</Title>
-        <Paragraph>
-          This dashboard gives you full control over the projects in your
-          portfolio, allowing you to create new projects or edit existing ones.
-          You can easily add or remove images, and manage user roles by
-          assigning admin access when needed.
-        </Paragraph>
-      </S.Section>
-      <S.Section>
-        <ProjectList initialProjects={projects} />
-      </S.Section>
+      <Title>Projects</Title>
+      <Paragraph>
+        This dashboard gives you full control over the projects in your
+        portfolio, allowing you to create new projects or edit existing ones.
+        You can easily add or remove images, and manage user roles by assigning
+        admin access when needed.
+      </Paragraph>
+      <ProjectList initialProjects={projects} />
     </S.Container>
   );
 }

@@ -1,8 +1,7 @@
 "use client";
 
 import styled from "styled-components";
-import { MainContainer } from "../layout.styles";
-import { ListCol } from "@/components/globals/common";
+import { ListCol, MainContainer } from "@/components/globals/common";
 
 export const Container = styled(MainContainer)`
   width: 100%;
