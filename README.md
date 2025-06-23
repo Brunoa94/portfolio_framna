@@ -1,8 +1,8 @@
-To start the project a .env file should be created following the .env.example structure and the next steps
+To start the project, a .env file should be created by following the structure in .env.example and the steps below.
 
 ### BACKEND CONFIGURATION
 
-This project uses an internal API with Prisma ORM to handle CRUD actions, and a Cloudflare R2 bucket to store images. Both require configuration, as explained in the following steps:
+This project uses an internal API with Prisma ORM to handle CRUD actions, and a Cloudflare R2 bucket to store images. A fully functional .env file will be provided. However, if a new configuration is desired, follow the steps below:
 
 ### CLOUDFLARE R2 Setup
 
@@ -11,7 +11,7 @@ This project uses an internal API with Prisma ORM to handle CRUD actions, and a 
    - Go to R2 Object Storage > Create Bucket
    - Choose a globally unique name for the bucket, for example: `portfolio-framna`
 3. Generate Access Keys:
-   - Go to R2 Object Storage > Overview > API > Access Keys\*\*
+   - Go to R2 Object Storage > Overview > API > Access Keys
    - Set the permissions to "Admin Read and Write"
    - Click "Create Access Key" to generate your `R2_ACCESS_KEY` and `R2_SECRET_KEY`
 4. Copy Your API Endpoint in Settings:
@@ -22,12 +22,7 @@ This project uses an internal API with Prisma ORM to handle CRUD actions, and a 
 
 ### Prisma Setup
 
-1. Generate a new acceleration project: `npx prisma db push --accelerate`
-2. Deploy the project `npx prisma deploy`
-3. Copy the returned string similar to `prisma+postgres://accelerate.prisma-data.net/...`
-4. Paste this string in `DATABASE_URL`
-5. Generate the Prisma client `npx prisma generate`
-6. Run the migrations to populate the database `npx prisma migrate dev`
+A database is provided in the .env but if you aim to create a new one follow the steps provided in https://www.prisma.io/docs/accelerate/getting-started
 
 ### FRONTEND CONFIGURATION
 
@@ -36,6 +31,12 @@ This project uses an internal API with Prisma ORM to handle CRUD actions, and a 
 3. Run `npm install` to install all the dependencies
 4. Run `npm run dev` to start the application locally
 
+### LOGIN AS ADMIN
+
+In the provided database there's already an admin that can be logged with the credentials:
+Username: test
+Password: test
+
 ### DOCUMENTATION
 
-The documentation related to the project can be found in:
+The documentation related to the project can be found in: https://pub-3eeb9c20c85d47c180ad36b8be441e05.r2.dev/portfolio_framna_documentation.pdf

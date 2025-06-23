@@ -28,4 +28,6 @@ export const Row = styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
+  flex-wrap: wrap;
+  width: 100%;
 `;

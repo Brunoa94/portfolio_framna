@@ -6,15 +6,16 @@ import Navbar from "../navbar/navbar";
 import AdminLogin from "../../adminLogin/adminButton/adminButton";
 import MobileNavbar from "../mobileNavbar/mobileNavbar";
 import useBreakpoints from "@/hooks/useBreakpoints";
+import Link from "next/link";
 
 const Header = () => {
   const { screen } = useBreakpoints();
 
   return (
     <S.Header>
-      <S.LogoContainer>
+      <Link href="/">
         <h1>Bruno Afonso</h1>
-      </S.LogoContainer>
+      </Link>
       {screen === "desktop" ? (
         <>
           <Navbar />

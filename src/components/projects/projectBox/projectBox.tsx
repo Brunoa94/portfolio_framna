@@ -18,8 +18,8 @@ const ProjectBox = ({ fromAdmin, project }: ProjectBoxI) => {
     <>
       {project?.images?.length > 0 ? (
         <Image
-          width={80}
-          height={80}
+          width={220}
+          height={120}
           alt="Project image"
           src={project?.images[0]}
           style={{ borderRadius: "8px" }}
@@ -31,11 +31,15 @@ const ProjectBox = ({ fromAdmin, project }: ProjectBoxI) => {
         <ItemTitle>{project?.title}</ItemTitle>
         <Paragraph>{project?.description}</Paragraph>
       </S.Col>
-      {project.images.length > 0 ? (
-        <ImagesButton images={project.images} project={project} />
-      ) : (
-        <MediumText $hasColor="black">No Images</MediumText>
-      )}
+      <S.ImagesRow>
+        {project.images.length > 0 ? (
+          <ImagesButton images={project.images} project={project} />
+        ) : (
+          <MediumText $hasColor="black" margin="0 0 0 auto">
+            No Images
+          </MediumText>
+        )}
+      </S.ImagesRow>
     </>
   );
 
@@ -43,7 +47,7 @@ const ProjectBox = ({ fromAdmin, project }: ProjectBoxI) => {
     return (
       <S.ProjectItem>
         <S.Col gap="12px">
-          <S.Row>{ProjectDetails}</S.Row>
+          <S.ProjectRow>{ProjectDetails}</S.ProjectRow>
           <S.Row>
             <UpdateProjectButton project={project} />
             <DeleteProjectButton project={project} />

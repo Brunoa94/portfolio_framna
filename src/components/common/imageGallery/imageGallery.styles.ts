@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  max-width: 500px;
+  max-width: 700px;
   aspect-ratio: 4 / 3;
   display: flex;
   flex-direction: column;

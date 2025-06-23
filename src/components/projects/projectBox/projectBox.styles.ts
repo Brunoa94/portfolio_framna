@@ -26,10 +26,28 @@ export const ProjectItem = styled.li`
 
 export const Col = styled(ColContainer)<{ gap?: string }>`
   gap: ${(props) => (props.gap ? props.gap : "6px")};
+  width: 100%;
 `;
 
 export const Row = styled(CommonRow)`
   gap: 12px;
+  flex-direction: column;
+
+  @media ${device.mobile} {
+    flex-direction: row;
+  }
+`;
+
+export const ProjectRow = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  @media ${device.tablet} {
+    flex-direction: row;
+    gap: 16px;
+  }
 `;
 
 export const Button = styled.button`
@@ -59,4 +77,16 @@ export const Technologies = styled(ListRow)`
 export const Technology = styled.li`
   font-family: font-family: var(--font-roboto), sans-serif
   font-size: 14px;
+`;
+
+export const ImagesRow = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media ${device.tablet} {
+    margin-left: auto;
+    width: fit-content;
+  }
 `;

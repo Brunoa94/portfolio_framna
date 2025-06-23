@@ -34,6 +34,11 @@ export const Paragraph = styled.p<{ color?: string; $textAlign?: string }>`
   color: ${(props) => props.color && props.color};
   text-align: ${(props) => props.$textAlign && props.$textAlign};
   font-family: var(--font-nunito), sans-serif;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const SmallText = styled.span`
@@ -41,9 +46,10 @@ export const SmallText = styled.span`
   text-align: center;
 `;
 
-export const MediumText = styled.span<{ $hasColor?: string }>`
+export const MediumText = styled.span<{ $hasColor?: string; margin?: string }>`
   font-size: 18px;
   color: ${(props) => (props.$hasColor ? props.$hasColor : "white")};
   white-space: nowrap;
   text-align: center;
+  margin: ${(props) => props.margin && props.margin};
 `;
