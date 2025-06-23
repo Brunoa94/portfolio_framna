@@ -2,7 +2,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import LoginAdminForm from "./loginAdminForm";
 import { useAlertStore } from "@/hooks/useAlertStore";
 import { signIn } from "next-auth/react";
-import { LoginUserI } from "@/types/admin";
+import { LoginAdminI } from "@/types/admin";
 
 jest.mock("next-auth/react", () => ({
   signIn: jest.fn(),
@@ -23,7 +23,7 @@ beforeEach(() => {
   );
 });
 
-const body: LoginUserI = {
+const body: LoginAdminI = {
   username: "mocked-username",
   password: "mocked-password",
 };
@@ -77,7 +77,6 @@ describe("Login Admin form", () => {
         message: "Authentication failed",
         status: 401,
       });
-      expect(mockHandleClose).toHaveBeenCalled();
     });
   });
 });

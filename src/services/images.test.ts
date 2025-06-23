@@ -39,9 +39,9 @@ describe("Images Service", () => {
 
       mockedFetch.mockRejectedValueOnce(error);
 
-      const response = await ImagesService.uploadImage(mockFile);
-
-      expect(response).rejects.toThrow("Cloudflare response error");
+      await expect(ImagesService.uploadImage(mockFile)).rejects.toThrow(
+        "Cloudflare response error"
+      );
     });
   });
 
@@ -50,11 +50,12 @@ describe("Images Service", () => {
 
     it("returns image data on success", async () => {
       const mockResponse: ResponseImageI = {
-        image: "",
+        image: "mock-image",
         status: 200,
       };
 
       mockedFetch.mockResolvedValueOnce({
+        ok: true,
         json: async () => mockResponse,
       });
 
@@ -72,9 +73,9 @@ describe("Images Service", () => {
 
       mockedFetch.mockRejectedValueOnce(error);
 
-      const response = await ImagesService.deleteImage(payload);
-
-      expect(response).rejects.toThrow("Cloudflare response error");
+      await expect(ImagesService.deleteImage(payload)).rejects.toThrow(
+        "Cloudflare response error"
+      );
     });
   });
 });

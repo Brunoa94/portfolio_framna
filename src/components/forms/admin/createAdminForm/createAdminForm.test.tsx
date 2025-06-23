@@ -1,14 +1,14 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 
 import { useAlertStore } from "@/hooks/useAlertStore";
-import UsersService from "@/services/admins";
-import { CreateUserI } from "@/types/admin";
 import CreateUserForm from "./createAdminForm";
+import { CreateAdminI } from "@/types/admin";
+import AdminsService from "@/services/admins";
 
-jest.mock("@/services/users", () => ({
+jest.mock("@/services/admins", () => ({
   __esModule: true,
   default: {
-    createUser: jest.fn(),
+    createAdmin: jest.fn(),
   },
 }));
 
@@ -16,7 +16,7 @@ jest.mock("@/hooks/useAlertStore", () => ({
   useAlertStore: jest.fn(),
 }));
 
-const mockedUsersService = jest.mocked(UsersService);
+const mockedUsersService = jest.mocked(AdminsService);
 
 describe("Create User form", () => {
   const mockHandleClose = jest.fn();
@@ -35,12 +35,12 @@ describe("Create User form", () => {
       status: 200,
     };
 
-    const body: CreateUserI = {
+    const body: CreateAdminI = {
       username: "mocked-username",
       password: "mocked-password",
     };
 
-    mockedUsersService.createUser.mockResolvedValueOnce({ ...body, id: 1 });
+    mockedUsersService.createAdmin.mockResolvedValueOnce({ ...body, id: 1 });
 
     render(<CreateUserForm handleClose={mockHandleClose} />);
 
@@ -55,7 +55,7 @@ describe("Create User form", () => {
     fireEvent.click(screen.getByRole("button", { name: /Submit/i }));
 
     await waitFor(() => {
-      expect(UsersService.createUser).toHaveBeenCalledWith(body);
+      expect(AdminsService.createAdmin).toHaveBeenCalledWith(body);
       expect(mockUpdateAlert).toHaveBeenCalledWith(successfullMessage);
       expect(mockHandleClose).toHaveBeenCalled();
     });

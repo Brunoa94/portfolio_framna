@@ -39,7 +39,6 @@ describe("Create Project form", () => {
       title: "Mocked title",
       description: "Mocked description",
       images: [],
-      userId: 2,
     };
 
     mockedProjectsService.createProject.mockResolvedValueOnce({});

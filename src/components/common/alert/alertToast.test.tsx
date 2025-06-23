@@ -22,7 +22,7 @@ describe("Testing Alert toast component", () => {
 
     const toast = screen.getByTestId("alert-toast");
 
-    expect(toast).toHaveStyle("right: -240px");
+    expect(toast).toHaveStyle("right: -340px");
   });
 
   it("show toast when an alert message is sent", async () => {

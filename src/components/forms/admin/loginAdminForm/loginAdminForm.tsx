@@ -1,5 +1,5 @@
 import InputText from "@/components/inputs/inputText";
-import { LoginUserI } from "@/types/admin";
+import { LoginAdminI as AdminI } from "@/types/admin";
 import { signIn } from "next-auth/react";
 import React, { FormEvent, useCallback } from "react";
 import * as S from "../../forms.styles";
@@ -23,7 +23,7 @@ const LoginAdminForm = ({ handleClose }: LoginAdminI) => {
 
       const form = new FormData(e.currentTarget);
 
-      const body: LoginUserI = {
+      const body: AdminI = {
         username: String(form.get("username")),
         password: String(form.get("password")),
       };

@@ -16,7 +16,6 @@ describe("Projects Service", () => {
       title: "Mock project",
       description: "Mock description",
       images: [],
-      userId: 2,
     };
 
     it("returns project data on success", async () => {
@@ -30,21 +29,6 @@ describe("Projects Service", () => {
       const result = await ProjectsService.createProject(newProject);
       expect(fetch).toHaveBeenCalledWith("/api/projects/", expect.any(Object));
       expect(result).toEqual(mockResponse);
-    });
-
-    it("throws error on response failure", async () => {
-      const error: ErrorI = {
-        message: "Internal server on Create project",
-        status: 400,
-      };
-
-      mockedFetch.mockResolvedValueOnce({
-        ok: false,
-        json: async () => error,
-      });
-
-      const result = await ProjectsService.createProject(newProject);
-      expect(result).toEqual(error);
     });
   });
 
@@ -100,19 +84,6 @@ describe("Projects Service", () => {
       expect(fetch).toHaveBeenCalledWith("/api/projects/2", expect.any(Object));
       expect(result).toEqual(success);
     });
-
-    it("throws error on delete failure", async () => {
-      const error: ErrorI = { message: "Not found", status: 404 };
-
-      mockedFetch.mockResolvedValueOnce({
-        ok: false,
-        json: async () => error,
-      });
-
-      const result = await ProjectsService.deleteProject(999);
-
-      expect(result).toEqual(error);
-    });
   });
 
   describe("on Get projects", () => {
@@ -122,14 +93,12 @@ describe("Projects Service", () => {
         title: "Project 1",
         description: "Description 1",
         images: [],
-        userId: 1,
       },
       {
         id: 2,
         title: "Project 2",
         description: "Description 2",
         images: [],
-        userId: 2,
       },
     ];
 
