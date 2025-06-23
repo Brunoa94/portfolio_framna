@@ -16,7 +16,7 @@ const CreateUserButton = () => {
 
   return (
     <>
-      <ActionButton margin="0 0 0 auto" color="green" onClick={open}>
+      <ActionButton $hasmargin="0 0 0 auto" color="green" onClick={open}>
         Create User
       </ActionButton>
       {isOpen && (

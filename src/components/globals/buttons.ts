@@ -17,7 +17,10 @@ export const SubmitButton = styled.button`
   margin-top: 12px;
 `;
 
-export const ActionButton = styled.button<{ color?: string; margin?: string }>`
+export const ActionButton = styled.button<{
+  color?: string;
+  $hasmargin?: string;
+}>`
   padding: 0 24px;
   height: 32px;
   background-color: ${(props) => props.color};
@@ -28,7 +31,7 @@ export const ActionButton = styled.button<{ color?: string; margin?: string }>`
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  margin: ${(props) => props.margin && props.margin};
+  margin: ${(props) => props.$hasmargin && props.$hasmargin};
 `;
 
 export const LoginButton = styled.button`

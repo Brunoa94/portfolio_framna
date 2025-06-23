@@ -35,13 +35,13 @@ export const Introduction = styled(SectionContainer)`
   }
 `;
 
-export const TextContainer = styled.article<{ margin?: string }>`
+export const TextContainer = styled.article<{ $hasmargin?: string }>`
   display: flex;
   flex-direction: column;
   gap: 12px;
   align-items: center;
   font-family: var(--font-nunito), sans-serif;
-  margin: ${(props) => props.margin && props.margin};
+  margin: ${(props) => props.$hasmargin && props.$hasmargin};
 `;
 
 export const SkillsSection = styled(SectionContainer)`

@@ -15,7 +15,9 @@ const InputImage = ({ images, updateForm, inAdmin }: InputImageI) => {
   const [imagesUploaded, setImagesUploaded] = useState<string[]>(images || []);
 
   const handleUpload = useCallback(
-    async (file: File | null) => {
+    async (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e?.target?.files?.[0];
+
       if (!file) {
         return;
       }
@@ -51,7 +53,7 @@ const InputImage = ({ images, updateForm, inAdmin }: InputImageI) => {
       <S.Input
         type="file"
         accept="image/*"
-        onChange={(e) => handleUpload(e.target.files?.[0] || null)}
+        onChange={handleUpload}
         id="image-loader"
         data-testid="image-loader"
       />

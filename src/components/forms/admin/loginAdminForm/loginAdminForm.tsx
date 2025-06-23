@@ -38,8 +38,6 @@ const LoginAdminForm = ({ handleClose }: LoginAdminI) => {
 
         if (!response?.ok) {
           updateAlert({ message: "Authentication failed", status: 401 });
-        } else {
-          updateAlert({ message: "Admin logged in", status: 200 });
         }
 
         handleClose();

@@ -87,6 +87,7 @@ describe("Testing Images gallery", () => {
         images={mockProject.images}
         handleClose={mockHandleClose}
         project={mockProject}
+        isAdmin
       />
     );
 

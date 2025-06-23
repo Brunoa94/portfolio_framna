@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import * as S from "./imageGallery.styles";
 import { ArrowLeft, ArrowRight, Trash2 } from "lucide-react";
@@ -13,15 +13,19 @@ interface Props {
   images: string[];
   handleClose: () => void;
   project: Project;
+  isAdmin?: boolean;
 }
 
-const ImageGallery = ({ images, handleClose, project }: Props) => {
+const ImageGallery = ({ images, handleClose, project, isAdmin }: Props) => {
   const [index, setIndex] = useState<number>(0);
   const updateProject = useProjectStore(
     (state: ProjectStore) => state.updateProject
   );
   const nextEnabled = index + 1 < images.length;
   const prevEnabled = index - 1 >= 0;
+
+  /** Memoizing these methods could be a bottleneck, considering the component re-renders every time index updates, 
+  and index is a dependency of both methods, causing them to be recreated on each render. */
 
   const handleIndex = (increment?: boolean) => {
     if (increment && nextEnabled) {
@@ -34,7 +38,7 @@ const ImageGallery = ({ images, handleClose, project }: Props) => {
     }
   };
 
-  const handleDelete = useCallback(async () => {
+  const handleDelete = async () => {
     const imgSrc = images[index];
 
     try {
@@ -55,7 +59,7 @@ const ImageGallery = ({ images, handleClose, project }: Props) => {
     } catch (e) {
       throw e as ErrorI;
     }
-  }, [project, images, index, updateProject, handleClose]);
+  };
 
   return (
     <S.ImageContainer>
@@ -73,7 +77,7 @@ const ImageGallery = ({ images, handleClose, project }: Props) => {
           onClick={() => handleIndex(false)}
           data-testid="prev-button"
         >
-          <ArrowLeft size={40} color="#454545" strokeWidth={2.25} />
+          <ArrowLeft size={40} color="white" strokeWidth={2.25} />
         </S.GalleryButton>
         <S.ImageWrapper>
           <Image
@@ -89,12 +93,14 @@ const ImageGallery = ({ images, handleClose, project }: Props) => {
           onClick={() => handleIndex(true)}
           data-testid="next-button"
         >
-          <ArrowRight size={40} color="#454545" strokeWidth={2.25} />
+          <ArrowRight size={40} color="white" strokeWidth={2.25} />
         </S.GalleryButton>
       </S.ButtonsRow>
-      <S.GalleryButton onClick={handleDelete} data-testid="delete-button">
-        <Trash2 size={28} color="red" />
-      </S.GalleryButton>
+      {isAdmin && (
+        <S.GalleryButton onClick={handleDelete} data-testid="delete-button">
+          <Trash2 size={28} color="red" />
+        </S.GalleryButton>
+      )}
     </S.ImageContainer>
   );
 };

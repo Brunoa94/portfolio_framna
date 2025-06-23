@@ -47,11 +47,8 @@ describe("Login Admin form", () => {
     await waitFor(() => {
       expect(signIn).toHaveBeenCalledWith("credentials", {
         ...body,
-        redirect: false,
-      });
-      expect(mockUpdateAlert).toHaveBeenCalledWith({
-        message: "Admin logged in",
-        status: 200,
+        redirect: true,
+        callbackUrl: "/admin-dashboard",
       });
       expect(mockHandleClose).toHaveBeenCalled();
     });

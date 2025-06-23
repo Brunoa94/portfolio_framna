@@ -3,9 +3,10 @@
 import styled, { css } from "styled-components";
 
 export const Title = styled.h1<{ $hasmargin?: string }>`
-  font-family: var(--font-roboto), sans-serif
+  font-family: var(--font-roboto), sans-serif;
   font-weight: bold;
   margin: ${(props) => props.$hasmargin};
+  color: #2e003b;
 `;
 
 export const ArticleTitle = styled.h3`
@@ -61,10 +62,13 @@ export const SmallText = styled.span`
   text-align: center;
 `;
 
-export const MediumText = styled.span<{ $hasColor?: string; margin?: string }>`
+export const MediumText = styled.span<{
+  $hasColor?: string;
+  $hasmargin?: string;
+}>`
   font-size: 18px;
   color: ${(props) => (props.$hasColor ? props.$hasColor : "white")};
   white-space: nowrap;
   text-align: center;
-  margin: ${(props) => props.margin && props.margin};
+  margin: ${(props) => props.$hasmargin && props.$hasmargin};
 `;

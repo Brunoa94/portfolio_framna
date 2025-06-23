@@ -15,9 +15,10 @@ const ImageGallery = dynamic(
 interface Props {
   images: string[];
   project: Project;
+  isAdmin?: boolean;
 }
 
-const ImagesButton = ({ images, project }: Props) => {
+const ImagesButton = ({ images, project, isAdmin }: Props) => {
   const { open, isOpen, close, closeOnFullscreen } = useOpen();
 
   return (
@@ -27,7 +28,12 @@ const ImagesButton = ({ images, project }: Props) => {
       </ActionButton>
       {isOpen && (
         <FullscreenLayer handleClose={closeOnFullscreen}>
-          <ImageGallery images={images} handleClose={close} project={project} />
+          <ImageGallery
+            images={images}
+            handleClose={close}
+            project={project}
+            isAdmin={isAdmin}
+          />
         </FullscreenLayer>
       )}
     </>

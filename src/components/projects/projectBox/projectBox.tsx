@@ -33,9 +33,13 @@ const ProjectBox = ({ fromAdmin, project }: ProjectBoxI) => {
       </S.Col>
       <S.ImagesRow>
         {project.images.length > 0 ? (
-          <ImagesButton images={project.images} project={project} />
+          <ImagesButton
+            images={project.images}
+            project={project}
+            isAdmin={fromAdmin}
+          />
         ) : (
-          <MediumText $hasColor="black" margin="0 0 0 auto">
+          <MediumText $hasColor="black" $hasmargin="0 0 0 auto">
             No Images
           </MediumText>
         )}

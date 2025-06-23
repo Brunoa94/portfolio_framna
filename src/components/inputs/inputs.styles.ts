@@ -23,4 +23,5 @@ export const Label = styled.label`
   font-family: var(--font-roboto), sans-serif
   font-size: 16px;
   font-weight: bold;
+  color: black;
 `;
