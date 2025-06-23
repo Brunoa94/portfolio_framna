@@ -21,7 +21,11 @@ const UpdateProjectButton = ({ project }: UpdateProjectButtonI) => {
 
   return (
     <>
-      <ActionButton onClick={open} color="gray">
+      <ActionButton
+        onClick={open}
+        color="gray"
+        data-testid="update-project-button"
+      >
         Update Project
       </ActionButton>
       {isOpen && (

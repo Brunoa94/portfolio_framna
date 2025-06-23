@@ -29,7 +29,11 @@ const DeleteProjectButton = ({ project }: Props) => {
   }, [project.id, updateAlert, deleteProject]);
 
   return (
-    <ActionButton color="red" onClick={handleDelete}>
+    <ActionButton
+      color="red"
+      onClick={handleDelete}
+      data-testid="delete-project-button"
+    >
       Delete
     </ActionButton>
   );
