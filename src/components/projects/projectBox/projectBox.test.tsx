@@ -20,7 +20,7 @@ describe("Project box component", () => {
 
     expect(screen.getByRole("img")).toHaveAttribute(
       "src",
-      "/_next/image?url=%2Fmock-img&w=256&q=75"
+      "/_next/image?url=%2Fmock-img&w=640&q=75"
     );
     expect(screen.getByText("Images")).toBeInTheDocument();
   });

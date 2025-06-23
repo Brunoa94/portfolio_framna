@@ -27,15 +27,18 @@ export async function POST(request: NextRequest) {
     };
 
     return NextResponse.json(body, { status: 200 });
-  } catch (e) {
-    throw e as ErrorI;
+  } catch {
+    const error: ErrorI = {
+      message: "Error uploading image",
+      status: 500,
+    };
+    throw error;
   }
 }
 
 export async function DELETE(request: NextRequest) {
   try {
     const body: DeleteImageI = await request.json();
-    console.log("IMG: " + body.imgSrc);
 
     const deleteCommand = new DeleteObjectCommand({
       Bucket: process.env.R2_BUCKET_NAME,
@@ -50,7 +53,11 @@ export async function DELETE(request: NextRequest) {
     };
 
     return NextResponse.json(response, { status: 200 });
-  } catch (e) {
-    throw new Error(e.message);
+  } catch {
+    const error: ErrorI = {
+      message: "Error deleting image",
+      status: 500,
+    };
+    throw error;
   }
 }
