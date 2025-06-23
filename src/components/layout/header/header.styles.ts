@@ -14,11 +14,8 @@ export const Header = styled.header`
   top: 0;
   border-radius: 0 0 16px 16px;
   background: #ffffff;
-  background: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 1) 12%,
-    rgba(64, 17, 107, 1) 100%
-  );
+  background: rgb(27, 5, 47);
+  color: white;
 `;
 
 export const LogoContainer = styled(CommonRow)`
