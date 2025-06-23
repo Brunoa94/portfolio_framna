@@ -32,7 +32,8 @@ const LoginAdminForm = ({ handleClose }: LoginAdminI) => {
         const response = await signIn("credentials", {
           username: body.username,
           password: body.password,
-          redirect: false,
+          redirect: true,
+          callbackUrl: "/admin-dashboard",
         });
 
         if (!response?.ok) {
