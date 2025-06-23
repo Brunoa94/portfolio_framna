@@ -1,5 +1,6 @@
 "use client";
 
+import { CommonRow } from "@/components/globals/common";
 import styled from "styled-components";
 
 export const Header = styled.header`
@@ -20,4 +21,12 @@ export const Header = styled.header`
   );
 `;
 
-export const LogoContainer = styled.div``;
+export const LogoContainer = styled(CommonRow)`
+  gap: 8px;
+`;
+
+export const HeaderTitle = styled.span`
+  font-size: 24px;
+  font-weight: bold;
+  font-family: var(--font-nunito), sans-serif;
+`;
