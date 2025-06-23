@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import { Prisma, Project } from "@/generated/prisma";
 
 export interface CreateProjectI
