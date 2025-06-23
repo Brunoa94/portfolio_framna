@@ -11,21 +11,21 @@ export default function AboutMe() {
       <Title>About Me: Bruno Afonso</Title>
       <S.Introduction>
         <S.TextContainer>
-          <Paragraph>
+          <Paragraph $noLineClamp={true}>
             Since childhood, I have always been passionate about numbers and
             solving math problems. Without being aware of what programming was,
             in 2012 I started studying Computer Engineering and finished my
             Master’s Degree in 2019, immediately getting my first job as a
             Trainee Backend Engineer.
           </Paragraph>
-          <Paragraph>
+          <Paragraph $noLineClamp={true}>
             This first job taught me patterns and practices that I still apply
             on a daily basis. Code quality is always the top priority, staying
             updated with the latest technologies in a market that is constantly
             growing is important, and being passionate about what we do is a
             huge plus.
           </Paragraph>
-          <Paragraph>
+          <Paragraph $noLineClamp={true}>
             A few years later, I began learning Frontend development on my own
             through online courses, and just 6 months after, I got a job at one
             of the biggest alternative app stores companies, Aptoide. What a
@@ -35,7 +35,7 @@ export default function AboutMe() {
             skills as a Frontend developer, and now I feel that I can say I’m
             ready for anything.
           </Paragraph>
-          <Paragraph>
+          <Paragraph $noLineClamp={true}>
             A few years later, I began learning Frontend development on my own
             through online courses, and just 6 months after, I got a job at one
             of the biggest alternative app stores companies, Aptoide. What a
@@ -45,7 +45,7 @@ export default function AboutMe() {
             skills as a Frontend developer, and now I feel that I can say I’m
             ready for anything.
           </Paragraph>
-          <Paragraph>
+          <Paragraph $noLineClamp={true}>
             Keeping two hard journeys in parallel was a challenge, but looking
             back, I don’t regret anything. My discipline, commitment, and hard
             work are intrinsic soft skills, and I can’t be more thankful for the

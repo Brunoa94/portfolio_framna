@@ -1,6 +1,6 @@
 "use client";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Title = styled.h1<{ $hasmargin?: string }>`
   font-family: var(--font-roboto), sans-serif
@@ -35,16 +35,25 @@ export const ItemTitle = styled.h3<{ color?: string }>`
   color: ${(props) => props.color && props.color};
 `;
 
-export const Paragraph = styled.p<{ color?: string; $textAlign?: string }>`
+export const Paragraph = styled.p<{
+  color?: string;
+  $textAlign?: string;
+  $noLineClamp?: boolean;
+}>`
   font-size: 16px;
   color: ${(props) => props.color && props.color};
   text-align: ${(props) => props.$textAlign && props.$textAlign};
   font-family: var(--font-nunito), sans-serif;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+
+  ${(props) =>
+    !props.$noLineClamp &&
+    css`
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    `}
 `;
 
 export const SmallText = styled.span`
