@@ -30,7 +30,7 @@ const UpdateProjectForm = ({ project, handleClose }: UpdateProjectFormI) => {
       />
       <InputImage images={project.images} updateForm={uploadImages} />
       <SubmitButton type="submit">
-        {isLoading ? "Loading..." : "Submit"}
+        {isLoading ? "Updating..." : "Submit"}
       </SubmitButton>
     </Form>
   );

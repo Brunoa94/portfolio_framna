@@ -21,6 +21,7 @@ export const Navbar = styled.nav`
 
     @media ${device.desktop} {
       font-size: 1.5rem;
+      color: white;
     }
   }
 

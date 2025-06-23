@@ -29,8 +29,7 @@ export const useProjectStore = create<ProjectStore>((set) => ({
     set(() => ({ isLoading: false }));
   },
   updateProject: async (projectId: number, data: UpdateProjectI) => {
-    set(() => ({ isLoading: false }));
-
+    set(() => ({ isLoading: true }));
     try {
       const updatedProject: Project = await ProjectsService.updateProject(
         projectId,
