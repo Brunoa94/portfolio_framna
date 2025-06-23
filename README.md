@@ -4,7 +4,7 @@ To start the project, a .env file should be created by following the structure i
 
 This project uses an internal API with Prisma ORM to handle CRUD actions, and a Cloudflare R2 bucket to store images. A fully functional .env file will be provided. However, if a new configuration is desired, follow the steps below:
 
-### CLOUDFLARE R2 Setup
+### CLOUDFLARE R2 Setup (In case of don't use the provided .env)
 
 1. Create a Cloudflare Account by signing up at https://dash.cloudflare.com/
 2. Create an R2 Bucket:
@@ -22,9 +22,11 @@ This project uses an internal API with Prisma ORM to handle CRUD actions, and a 
 
 ### Prisma Setup
 
-A database is provided in the .env but if you aim to create a new one follow the steps provided in https://www.prisma.io/docs/accelerate/getting-started
+A database is provided in the .env file sent by email. It is recommended to use that database considering that it is populated with some of my personal projects and also contains an admin to log in.
 
-### FRONTEND CONFIGURATION
+If you aim to create a new database with Prisma integrated, follow the steps provided in https://www.prisma.io/docs/accelerate/getting-started
+
+### FRONTEND CONFIGURATION (In case of don't use the provided .env)
 
 1. Generate a Next Auth secret `openssl rand -base64 32`
 2. Copy the string and paste it in `NEXTAUTH_SECRET`
