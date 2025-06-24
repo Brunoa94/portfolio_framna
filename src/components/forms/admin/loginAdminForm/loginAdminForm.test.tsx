@@ -47,15 +47,14 @@ describe("Login Admin form", () => {
     await waitFor(() => {
       expect(signIn).toHaveBeenCalledWith("credentials", {
         ...body,
-        redirect: true,
-        callbackUrl: "/admin-dashboard",
+        redirect: false,
       });
       expect(mockHandleClose).toHaveBeenCalled();
     });
   });
 
   it("calls updateAlert with error if signIn fails", async () => {
-    (signIn as jest.Mock).mockRejectedValueOnce({ ok: false });
+    (signIn as jest.Mock).mockResolvedValueOnce({ ok: false });
 
     render(<LoginAdminForm handleClose={mockHandleClose} />);
 

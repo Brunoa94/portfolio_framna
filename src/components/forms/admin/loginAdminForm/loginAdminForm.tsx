@@ -9,7 +9,6 @@ import InputPassword from "@/components/inputs/inputPassword";
 import { useAlertStore } from "@/hooks/useAlertStore";
 import { AlertStore } from "@/store/alertStore";
 import { AdminStore, useAdminStore } from "@/store/adminStore";
-import { redirect } from "next/navigation";
 
 interface LoginAdminI {
   handleClose: () => void;
@@ -48,7 +47,6 @@ const LoginAdminForm = ({ handleClose }: LoginAdminI) => {
         updateAlert({ message: "Authentication failed", status: 401 });
       } else {
         handleClose();
-        redirect("/admin-dashboard");
       }
     },
     [handleClose, updateAlert, updateLoading]
