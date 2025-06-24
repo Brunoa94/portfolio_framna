@@ -9,6 +9,7 @@ import InputPassword from "@/components/inputs/inputPassword";
 import { useAlertStore } from "@/hooks/useAlertStore";
 import { AlertStore } from "@/store/alertStore";
 import { AdminStore, useAdminStore } from "@/store/adminStore";
+import { redirect } from "next/navigation";
 
 interface LoginAdminI {
   handleClose: () => void;
@@ -33,22 +34,21 @@ const LoginAdminForm = ({ handleClose }: LoginAdminI) => {
         password: String(form.get("password")),
       };
 
-      try {
-        updateLoading(true);
-        const response = await signIn("credentials", {
-          username: body.username,
-          password: body.password,
-          redirect: true,
-          callbackUrl: "/admin-dashboard",
-        });
-        updateLoading(false);
-        if (!response?.ok) {
-          updateAlert({ message: "Authentication failed", status: 401 });
-        }
+      updateLoading(true);
 
-        handleClose();
-      } catch {
+      const response = await signIn("credentials", {
+        username: body.username,
+        password: body.password,
+        redirect: false,
+      });
+
+      updateLoading(false);
+
+      if (!response?.ok) {
         updateAlert({ message: "Authentication failed", status: 401 });
+      } else {
+        handleClose();
+        redirect("/admin-dashboard");
       }
     },
     [handleClose, updateAlert, updateLoading]

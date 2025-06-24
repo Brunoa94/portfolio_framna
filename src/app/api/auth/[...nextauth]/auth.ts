@@ -28,20 +28,26 @@ export const authOptions: NextAuthOptions = {
             throw error;
           }
 
-          await comparePasswords(
+          const isAuthenticated = await comparePasswords(
             credentials?.password || "",
             user?.password || ""
           );
 
+          if (!isAuthenticated) {
+            const error: ErrorI = {
+              message: "Authentication failed",
+              status: 401,
+            };
+            throw error;
+          }
+
+          console.log("USER: " + JSON.stringify(isAuthenticated));
           return {
             id: user?.id || 0,
             username: user?.username || "",
           };
-        } catch {
-          const error: ErrorI = {
-            message: "Authentication failed",
-            status: 401,
-          };
+        } catch (error) {
+          console.log("Authentication error:", error);
           throw error;
         }
       },
